@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>git 常用命令 - LC &amp; MC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Linux 之父 Linus 一直痛恨的 CVS 及 SVN 都是集中式的版本控制系统，用 C 写了一个分布式版本控制系统 Git，也是目前世界上最先进的分布式版本控制系统（没有之一）。它安全性高，可离线操作，并有强大的分支管理策略！git 是程序猿必备的技能之一。  以下简单总结了日常用到的一些 git 命令">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git 常用命令">
+<meta property="og:url" content="//shinekidd.github.io/git/2017/10/14/index.html">
+<meta property="og:site_name" content="LC &amp; MC">
+<meta property="og:description" content="Linux 之父 Linus 一直痛恨的 CVS 及 SVN 都是集中式的版本控制系统，用 C 写了一个分布式版本控制系统 Git，也是目前世界上最先进的分布式版本控制系统（没有之一）。它安全性高，可离线操作，并有强大的分支管理策略！git 是程序猿必备的技能之一。  以下简单总结了日常用到的一些 git 命令">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-08T03:20:41.098Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git 常用命令">
+<meta name="twitter:description" content="Linux 之父 Linus 一直痛恨的 CVS 及 SVN 都是集中式的版本控制系统，用 C 写了一个分布式版本控制系统 Git，也是目前世界上最先进的分布式版本控制系统（没有之一）。它安全性高，可离线操作，并有强大的分支管理策略！git 是程序猿必备的技能之一。  以下简单总结了日常用到的一些 git 命令">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai-sublime.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                LC&amp;MC
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-10-13T16:00:00.000Z">2017-10-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/git/">git</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 minutes read (About 2140 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                git 常用命令
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>Linux 之父 Linus 一直痛恨的 CVS 及 SVN 都是集中式的版本控制系统，用 C 写了一个分布式版本控制系统 Git，也是目前世界上最先进的分布式版本控制系统（没有之一）。它安全性高，可离线操作，并有强大的分支管理策略！git 是程序猿必备的技能之一。</p>
+</blockquote>
+<p>以下简单总结了日常用到的一些 git 命令</p>
+<a id="more"></a>
+<p>先<a href="https://git-scm.com/" target="_blank" rel="noopener">下载</a> git，安装成功后，打开 Git Bash，输入以下命令</p>
+<h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><p>git 配置分全局配置（带 –global 参数），项目配置</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 显示是当前 git 配置</span></span><br><span class="line">git config --list</span><br><span class="line"><span class="hljs-comment"># 编辑配置文件</span></span><br><span class="line">git config -e [--global]</span><br><span class="line"><span class="hljs-comment"># 配置用户名</span></span><br><span class="line">git config [--global] user.name shinekidd</span><br><span class="line"><span class="hljs-comment"># 配置邮箱</span></span><br><span class="line">git config [--global] user.email shinekidd@163.com</span><br></pre></td></tr></table></figure>
+<h2 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 从服务器克隆仓库，可指定目标文件夹（folderName）</span></span><br><span class="line">git <span class="hljs-built_in">clone</span> git@github.com:ShineKidd/example.git folderName</span><br></pre></td></tr></table></figure>
+<h2 id="add"><a href="#add" class="headerlink" title="add"></a>add</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 工作区的状态于暂存区状态保持一致，add之前 head 和暂存区是状态是一致的</span></span><br><span class="line">git add . </span><br><span class="line">git add --all</span><br><span class="line">git add -A</span><br><span class="line"><span class="hljs-comment"># 添加被追踪文件的修改改到暂存区</span></span><br><span class="line">git add -u</span><br><span class="line"><span class="hljs-comment"># 添加指定文件或目录，支持通配符</span></span><br><span class="line">git add fileName *.js</span><br><span class="line"><span class="hljs-comment"># 强制添加 .gitignore 忽略的文件</span></span><br><span class="line">git add -f fileName</span><br></pre></td></tr></table></figure>
+<h2 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 提交并填写提交日志，不使用 -m 参数可进入 vim 编辑器书写提交日志</span></span><br><span class="line">git commit -m <span class="hljs-string">'fix #issue #48'</span></span><br><span class="line"><span class="hljs-comment"># 修订最后一次提交，进入 vim 编辑 message 。会改变 head，合并冲突的时候不可用</span></span><br><span class="line">git commit --amend</span><br><span class="line"><span class="hljs-comment"># 添加 tracked 的文件到暂存区，并提交已修改的文件</span></span><br><span class="line">git commit -a -m <span class="hljs-string">'message'</span></span><br></pre></td></tr></table></figure>
+<h2 id="remote"><a href="#remote" class="headerlink" title="remote"></a>remote</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 添加该远程地址，保存别名为 origin</span></span><br><span class="line">git remote add origin git@github.com:ShineKidd/example.git</span><br><span class="line"><span class="hljs-comment"># 更换仓库地址</span></span><br><span class="line">git remote <span class="hljs-built_in">set</span>-url origin git@github.com:ShineKidd/test.git</span><br><span class="line"><span class="hljs-comment"># 删除别名为 origin 的远程地址</span></span><br><span class="line">git remote rm origin</span><br><span class="line"><span class="hljs-comment"># 查看已添加的远程地址</span></span><br><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<h2 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 拉取远程仓库到本地</span></span><br><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+<h2 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 接拉取远程分支，并入当前分支（前提：远程仓库分支与本地分支已建立联系）</span></span><br><span class="line">git pull <span class="hljs-comment"># 同 git fetch + git merge</span></span><br><span class="line"><span class="hljs-comment"># 拉取远程 dev 分支并与本地 dev 分支合并，同上两句命令</span></span><br><span class="line">git pull origin dev </span><br><span class="line"><span class="hljs-comment"># 拉取远程 dev 分支与本地 master 分支合并</span></span><br><span class="line">git pull origin dev:master </span><br><span class="line"><span class="hljs-comment"># 拉去远程分支，并入本地分支，并整理</span></span><br><span class="line">git pull --rebase <span class="hljs-comment"># 同 git fetch + git rebase</span></span><br></pre></td></tr></table></figure>
+<h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 新键分支</span></span><br><span class="line">git branch new-branch-name</span><br><span class="line"><span class="hljs-comment"># 删除分支</span></span><br><span class="line">git branch -d branch-name</span><br><span class="line"><span class="hljs-comment"># 基于当前分支的某个节点，创建新的分支</span></span><br><span class="line">git branch branch-name a8c1fe47</span><br><span class="line"><span class="hljs-comment"># 强制删除分支</span></span><br><span class="line">git branch -D branch-name</span><br><span class="line"><span class="hljs-comment"># 查看分支信息，默认显示本地分支，参数 -v -vv 显示最后提交信息，参数 -r 显示远程分支，参数 -a 显示所有分支</span></span><br><span class="line">git branch</span><br><span class="line"><span class="hljs-comment"># 使用 git 在本地新建一个分支 debug 后，需要指定远程 origin/debug 分支与本地 debug 的联系</span></span><br><span class="line">git branch --<span class="hljs-built_in">set</span>-upstream-to=origin/debug debug </span><br><span class="line"><span class="hljs-comment"># 或者</span></span><br><span class="line">git branch --<span class="hljs-built_in">set</span>-upstream debug origin/debug</span><br></pre></td></tr></table></figure>
+<h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 将 debug 并入当前分支，默认是 fast-forward (快进模式)</span></span><br><span class="line">git merge debug</span><br><span class="line"><span class="hljs-comment"># 将远程仓库 origin 上的 dev 分支并入当前分支，一般在执行 fetch 操作后</span></span><br><span class="line">git merge origin/dev</span><br><span class="line"><span class="hljs-comment">#  禁用 fast-forward 模式合并，合并后保留分支细节，但是要求输入合并日志，不输入会使用默认日志</span></span><br><span class="line">git merge debug --no-ff -m <span class="hljs-string">'merged fix issue #455'</span></span><br><span class="line"><span class="hljs-comment"># 如果发现冲突，取消合并操作</span></span><br><span class="line">git merge --abort</span><br></pre></td></tr></table></figure>
+<h2 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 在当前的 commit 上添加标签 v1.2</span></span><br><span class="line">git tag v1.2</span><br><span class="line"><span class="hljs-comment"># 指定 commit 上添加标签 v1.1</span></span><br><span class="line">git tag v1.1 5fe47d89a</span><br><span class="line"><span class="hljs-comment"># 指定 commit 上添加标签 v1.3，并附标签说明</span></span><br><span class="line">git tag -a v1.3 -m <span class="hljs-string">'新增了xxx功能'</span> 8feb8b26f</span><br><span class="line"><span class="hljs-comment"># 删除 v1.2 这个标签</span></span><br><span class="line">git tag -d v1.2</span><br></pre></td></tr></table></figure>
+<h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 第一次推送本地分 dev 分支到远程服务器</span></span><br><span class="line">git push -u origin dev</span><br><span class="line"><span class="hljs-comment"># 之后的推送， Git Bash 直接 git push 就可以推送的对应的分支，在 cmd 中，要带 origin dev 参数</span></span><br><span class="line">git push</span><br><span class="line"><span class="hljs-comment"># 推送 v1.2 这个标签到远程仓库</span></span><br><span class="line">git push origin v1.2</span><br><span class="line"><span class="hljs-comment"># 推送所有的本地标签到远程仓库</span></span><br><span class="line">git push origin --tags</span><br><span class="line"><span class="hljs-comment"># 同步本地已删除的标签 v1.2 到远程仓库</span></span><br><span class="line">git push origin :refs/tags/v1.2</span><br><span class="line"><span class="hljs-comment"># 删除远程分支</span></span><br><span class="line">git push origin -d branch-name</span><br></pre></td></tr></table></figure>
+<h2 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h2><p>当你在开发新功能的时候，突然有一个紧急 bug 要修复怎么办？<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 保存工作现场，这时工作区是 clean 的</span></span><br><span class="line">git stash</span><br><span class="line"><span class="hljs-comment"># 查看保存的列表</span></span><br><span class="line">git stash list</span><br><span class="line"><span class="hljs-comment"># 恢复某个记录到工作区</span></span><br><span class="line">git apply stash@&#123;0&#125; </span><br><span class="line"><span class="hljs-comment"># 应用并删除最近的一次 stash</span></span><br><span class="line">git stash pop </span><br><span class="line"><span class="hljs-comment"># 删除某个 stash</span></span><br><span class="line">git stash drop stash@&#123;0&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="status"><a href="#status" class="headerlink" title="status"></a>status</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<h2 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h2><p>如果用 vscode 编辑器，推荐一款 git 插件 Git History Diff，非常方便查看提交历史<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 比较暂存区与当前工作区文件的区别</span></span><br><span class="line">git diff</span><br><span class="line"><span class="hljs-comment"># 比较指定提交与当前工作区的区别</span></span><br><span class="line">git diff eb667b8</span><br><span class="line"><span class="hljs-comment"># 比较两处提交的差异</span></span><br><span class="line">git diff head^ head</span><br><span class="line"><span class="hljs-comment"># 比较指定提交中的某个文件与当前工作区的区别</span></span><br><span class="line">git diff eb667b8 -- ./src/fileName </span><br><span class="line"><span class="hljs-comment"># 比较暂存区与最新本地版本库（本地库中最近一次commit的内容）</span></span><br><span class="line">git diff --cached</span><br><span class="line"><span class="hljs-comment"># 比较暂存区与本地版本库指定提交的区别</span></span><br><span class="line">git diff --cached eb667b8</span><br><span class="line"><span class="hljs-comment"># 比较 dev 分支的指定提交与当前工作区的区别</span></span><br><span class="line">git diff dev eb667b8</span><br></pre></td></tr></table></figure></p>
+<h2 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h2><p>HEAD 指针默认指向最近的一次 commit，通过 reset 操作可以改变 HEAD 指针指向的 commit。git reset 默认参数是 –mixed，默认 commit 是 head</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 同 git reset --mixed head ，暂存区和最近一次 commit(head) 保持一致，即会放弃之前的 git add 操作，工作区不受影响</span></span><br><span class="line">git reset</span><br><span class="line"><span class="hljs-comment"># 工作区和暂存区不受影响，只是 HEAD 指针指向特定的 commit 了</span></span><br><span class="line">git reset --soft eb667b8</span><br><span class="line"><span class="hljs-comment"># 工作区和暂存区和指定 commit 保持一致，工作区未保存将会被覆盖，变成 clean 的状态，这是个危险的操作</span></span><br><span class="line">git reset --hard eb667b8</span><br><span class="line"><span class="hljs-comment"># 重置 HEAD 到指定提交，不改变工作区和暂存区的状态</span></span><br><span class="line">git reset --keep eb667b8</span><br></pre></td></tr></table></figure>
+<h2 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 撤销指定提交</span></span><br><span class="line">git revert 785cda4</span><br></pre></td></tr></table></figure>
+<h2 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换当前分支为 debug 分支</span></span><br><span class="line">git checkout debug</span><br><span class="line"><span class="hljs-comment"># 新键并切换分支</span></span><br><span class="line">git checkout -b new-branch</span><br><span class="line"><span class="hljs-comment"># 基于当前的分支，创建一个没有提交记录的新分支</span></span><br><span class="line">git checkout --orphan new-branch</span><br><span class="line"><span class="hljs-comment"># 切换分支，并把当前分支修改的内容转移到目标分支</span></span><br><span class="line">git checkout --merge branch-name</span><br><span class="line"><span class="hljs-comment"># 从暂存区检出文件，工作区的文件会被检出文件覆盖，可以用 . 表示所有文件</span></span><br><span class="line">git checkout -- fileName</span><br><span class="line"><span class="hljs-comment"># # 检出某个 commit 中的文件，工作区的文件会被检出文件覆盖，可以用 . 表示所有文件</span></span><br><span class="line">git checkout eb667b8 -- fileName</span><br><span class="line"><span class="hljs-comment"># 检出某个 commit ，如果你的工作区有变更未提交，操 abor</span></span><br><span class="line">git checkout eb667b8</span><br><span class="line"><span class="hljs-comment"># 强制检出某 commit，会丢失工作区的修改，危险操作</span></span><br><span class="line">git checkout -f eb667b8</span><br></pre></td></tr></table></figure>
+<h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 删除工作区区文件，该命令会把操作提交到暂存区</span></span><br><span class="line">git rm fileName </span><br><span class="line"><span class="hljs-comment"># 文件已添加到暂存区，删除工作区区文件</span></span><br><span class="line">git rm -f fileName</span><br><span class="line"><span class="hljs-comment"># 删除暂存区文件，并不再追踪文件的变化(文件状态变成 untracked)</span></span><br><span class="line">git rm --cached fileName</span><br></pre></td></tr></table></figure>
+<h2 id="log"><a href="#log" class="headerlink" title="log"></a>log</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看指定文件(夹)提交历史及文件改动</span></span><br><span class="line">git <span class="hljs-built_in">log</span> -p file</span><br><span class="line"><span class="hljs-comment"># --graph 以图形画的形式显示 --pretty=oneline 每条记录只显示一行信息 </span></span><br><span class="line">git <span class="hljs-built_in">log</span> --graph --pretty=oneline --abbrev-commit </span><br><span class="line"><span class="hljs-comment"># 显示用户提交次数，按提交次数排序</span></span><br><span class="line">git shortlog -sn</span><br><span class="line"><span class="hljs-comment"># 查看输入过的 git 指令，在挽救错误方面很有用</span></span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h2 id="show"><a href="#show" class="headerlink" title="show"></a>show</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看 v1.2 这个标签的信息</span></span><br><span class="line">git show v1.2</span><br><span class="line"><span class="hljs-comment"># 显示某次提交的内容差异</span></span><br><span class="line">git show head^</span><br><span class="line"><span class="hljs-comment"># 显示某次提交的某文件的的内容差异</span></span><br><span class="line">git show head -- file</span><br></pre></td></tr></table></figure>
+<h2 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h2><p>rebase 操作可以把本地未 push 的分叉提交历史整理成直线, rebase 的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 把 debug 分支并入当前分支，并整理</span></span><br><span class="line">git rebase debug</span><br><span class="line"><span class="hljs-comment"># 变基过程遇到冲突，添加到暂存区后继续执行</span></span><br><span class="line">git rebase --<span class="hljs-built_in">continue</span></span><br><span class="line"><span class="hljs-comment"># 取消变基</span></span><br><span class="line">git rebase --abort</span><br></pre></td></tr></table></figure>
+<h2 id="check-ignore"><a href="#check-ignore" class="headerlink" title="check-ignore"></a>check-ignore</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git check-ignore -v fileName</span><br></pre></td></tr></table></figure>
+<center> — <em>The End</em> — </center>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/git/">git</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/css/2017/10/21/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">css 旋转环形 loadding 效果</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/hotkey/2017/10/07/">
+                <span class="level-item">chrome 的快捷键</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'git/2017/10/14/',
+		owner: 'ShineKidd',
+		repo: 'blog',
+		oauth: {
+			client_id: '0f25d421879bfe388e0f',
+			client_secret: 'fe74c5e65d1b3e93a1b6432f588533543d92750c',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#config">
+        <span class="has-mr-6">1</span>
+        <span>config</span>
+        </a></li><li>
+        <a class="is-flex" href="#clone">
+        <span class="has-mr-6">2</span>
+        <span>clone</span>
+        </a></li><li>
+        <a class="is-flex" href="#add">
+        <span class="has-mr-6">3</span>
+        <span>add</span>
+        </a></li><li>
+        <a class="is-flex" href="#commit">
+        <span class="has-mr-6">4</span>
+        <span>commit</span>
+        </a></li><li>
+        <a class="is-flex" href="#remote">
+        <span class="has-mr-6">5</span>
+        <span>remote</span>
+        </a></li><li>
+        <a class="is-flex" href="#fetch">
+        <span class="has-mr-6">6</span>
+        <span>fetch</span>
+        </a></li><li>
+        <a class="is-flex" href="#pull">
+        <span class="has-mr-6">7</span>
+        <span>pull</span>
+        </a></li><li>
+        <a class="is-flex" href="#branch">
+        <span class="has-mr-6">8</span>
+        <span>branch</span>
+        </a></li><li>
+        <a class="is-flex" href="#merge">
+        <span class="has-mr-6">9</span>
+        <span>merge</span>
+        </a></li><li>
+        <a class="is-flex" href="#tag">
+        <span class="has-mr-6">10</span>
+        <span>tag</span>
+        </a></li><li>
+        <a class="is-flex" href="#push">
+        <span class="has-mr-6">11</span>
+        <span>push</span>
+        </a></li><li>
+        <a class="is-flex" href="#stash">
+        <span class="has-mr-6">12</span>
+        <span>stash</span>
+        </a></li><li>
+        <a class="is-flex" href="#status">
+        <span class="has-mr-6">13</span>
+        <span>status</span>
+        </a></li><li>
+        <a class="is-flex" href="#diff">
+        <span class="has-mr-6">14</span>
+        <span>diff</span>
+        </a></li><li>
+        <a class="is-flex" href="#reset">
+        <span class="has-mr-6">15</span>
+        <span>reset</span>
+        </a></li><li>
+        <a class="is-flex" href="#revert">
+        <span class="has-mr-6">16</span>
+        <span>revert</span>
+        </a></li><li>
+        <a class="is-flex" href="#checkout">
+        <span class="has-mr-6">17</span>
+        <span>checkout</span>
+        </a></li><li>
+        <a class="is-flex" href="#rm">
+        <span class="has-mr-6">18</span>
+        <span>rm</span>
+        </a></li><li>
+        <a class="is-flex" href="#log">
+        <span class="has-mr-6">19</span>
+        <span>log</span>
+        </a></li><li>
+        <a class="is-flex" href="#show">
+        <span class="has-mr-6">20</span>
+        <span>show</span>
+        </a></li><li>
+        <a class="is-flex" href="#rebase">
+        <span class="has-mr-6">21</span>
+        <span>rebase</span>
+        </a></li><li>
+        <a class="is-flex" href="#check-ignore">
+        <span class="has-mr-6">22</span>
+        <span>check-ignore</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-27T00:54:50.579Z">2018-11-27</time></div>
+                    <a href="/uncategorized/2018/11/27/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-27T16:00:00.000Z">2018-04-28</time></div>
+                    <a href="/linux/2018/04/28/" class="has-link-black-ter is-size-6">linux 目录一览</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-20T16:00:00.000Z">2018-04-21</time></div>
+                    <a href="/linux/2018/04/21/" class="has-link-black-ter is-size-6">linux 运行级别</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-16T16:00:00.000Z">2018-04-17</time></div>
+                    <a href="/linux/2018/04/17/" class="has-link-black-ter is-size-6">linux 文件、目录的权限</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-15T16:00:00.000Z">2018-04-16</time></div>
+                    <a href="/linux/2018/04/16/" class="has-link-black-ter is-size-6">linux 下的 /etc/shadow 文件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/css/">
+            <span class="level-start">
+                <span class="level-item">css</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/git/">
+            <span class="level-start">
+                <span class="level-item">git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hotkey/">
+            <span class="level-start">
+                <span class="level-item">hotkey</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/html/">
+            <span class="level-start">
+                <span class="level-item">html</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/http/">
+            <span class="level-start">
+                <span class="level-item">http</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/js/">
+            <span class="level-start">
+                <span class="level-item">js</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">23</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/npm/">
+            <span class="level-start">
+                <span class="level-item">npm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/proxy/">
+            <span class="level-start">
+                <span class="level-item">proxy</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/security/">
+            <span class="level-start">
+                <span class="level-item">security</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/test/">
+            <span class="level-start">
+                <span class="level-item">test</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/tools/">
+            <span class="level-start">
+                <span class="level-item">tools</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 13.33px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/a/" style="font-size: 10px;">a</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 16.67px;">error</a> <a href="/tags/excel/" style="font-size: 13.33px;">excel</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/module/" style="font-size: 20px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 13.33px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 20px;">syntax</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 13.33px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 13.33px;">xlsx</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    LC&amp;MC
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 shinekidd&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

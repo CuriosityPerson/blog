@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>linux 运行级别 - LC &amp; MC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="CentOS 7 的运行级别的配置不再是使用 /etc/inittab 文件管理了，而是使用 systemd ，运行级别文件指定在 /lib/systemd/system 目录下：runlevel*.target">
+<meta name="keywords" content="runlevel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux 运行级别">
+<meta property="og:url" content="//shinekidd.github.io/linux/2018/04/21/index.html">
+<meta property="og:site_name" content="LC &amp; MC">
+<meta property="og:description" content="CentOS 7 的运行级别的配置不再是使用 /etc/inittab 文件管理了，而是使用 systemd ，运行级别文件指定在 /lib/systemd/system 目录下：runlevel*.target">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-02T14:28:45.596Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux 运行级别">
+<meta name="twitter:description" content="CentOS 7 的运行级别的配置不再是使用 /etc/inittab 文件管理了，而是使用 systemd ，运行级别文件指定在 /lib/systemd/system 目录下：runlevel*.target">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai-sublime.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                LC&amp;MC
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-04-20T16:00:00.000Z">2018-04-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 222 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                linux 运行级别
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>CentOS 7 的运行级别的配置不再是使用 /etc/inittab 文件管理了，而是使用 systemd ，运行级别文件指定在 /lib/systemd/system 目录下：runlevel*.target</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="查看当前级别"><a href="#查看当前级别" class="headerlink" title="查看当前级别"></a>查看当前级别</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl get-default</span><br></pre></td></tr></table></figure>
+<h2 id="设置运行级别"><a href="#设置运行级别" class="headerlink" title="设置运行级别"></a>设置运行级别</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><p>切换图形级别和命令行级别没有变化</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到命令行级别</span></span><br><span class="line">init 3</span><br><span class="line"><span class="hljs-comment"># 切换到图形级别</span></span><br><span class="line">init 5  <span class="hljs-comment"># 或 startx</span></span><br></pre></td></tr></table></figure>
+<h3 id="systemctl-set-default"><a href="#systemctl-set-default" class="headerlink" title="systemctl set-default"></a>systemctl set-default</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到命令行运行级别</span></span><br><span class="line">systemctl <span class="hljs-built_in">set</span>-default multi-user.target</span><br><span class="line"><span class="hljs-comment"># 切换到图形运行级别</span></span><br><span class="line">systemctl <span class="hljs-built_in">set</span>-default graphical.target</span><br></pre></td></tr></table></figure>
+<p>runlevel3.target 和 runlevel5.target 分别是指向 multi-user.target 和 graphical.target 的符号链接</p>
+<h3 id="systemctl-isolate"><a href="#systemctl-isolate" class="headerlink" title="systemctl isolate"></a>systemctl isolate</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到命令行运行级别</span></span><br><span class="line">systemctl isolate runlevel3.target</span><br><span class="line"><span class="hljs-comment"># 切换到图形运行级别</span></span><br><span class="line">systemctl isolate runlevel5.target</span><br></pre></td></tr></table></figure>
+<h2 id="默认运行级别"><a href="#默认运行级别" class="headerlink" title="默认运行级别"></a>默认运行级别</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 设置系统启动时运行级别为图形界面</span></span><br><span class="line">ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target</span><br></pre></td></tr></table></figure>
+<center> — <em>The End</em> — </center>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/runlevel/">runlevel</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/linux/2018/04/28/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">linux 目录一览</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/linux/2018/04/17/">
+                <span class="level-item">linux 文件、目录的权限</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'linux/2018/04/21/',
+		owner: 'ShineKidd',
+		repo: 'blog',
+		oauth: {
+			client_id: '0f25d421879bfe388e0f',
+			client_secret: 'fe74c5e65d1b3e93a1b6432f588533543d92750c',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#查看当前级别">
+        <span class="has-mr-6">1</span>
+        <span>查看当前级别</span>
+        </a></li><li>
+        <a class="is-flex" href="#设置运行级别">
+        <span class="has-mr-6">2</span>
+        <span>设置运行级别</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#init">
+        <span class="has-mr-6">2.1</span>
+        <span>init</span>
+        </a></li><li>
+        <a class="is-flex" href="#systemctl-set-default">
+        <span class="has-mr-6">2.2</span>
+        <span>systemctl set-default</span>
+        </a></li><li>
+        <a class="is-flex" href="#systemctl-isolate">
+        <span class="has-mr-6">2.3</span>
+        <span>systemctl isolate</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#默认运行级别">
+        <span class="has-mr-6">3</span>
+        <span>默认运行级别</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-27T00:54:50.579Z">2018-11-27</time></div>
+                    <a href="/uncategorized/2018/11/27/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-27T16:00:00.000Z">2018-04-28</time></div>
+                    <a href="/linux/2018/04/28/" class="has-link-black-ter is-size-6">linux 目录一览</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-20T16:00:00.000Z">2018-04-21</time></div>
+                    <a href="/linux/2018/04/21/" class="has-link-black-ter is-size-6">linux 运行级别</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-16T16:00:00.000Z">2018-04-17</time></div>
+                    <a href="/linux/2018/04/17/" class="has-link-black-ter is-size-6">linux 文件、目录的权限</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-15T16:00:00.000Z">2018-04-16</time></div>
+                    <a href="/linux/2018/04/16/" class="has-link-black-ter is-size-6">linux 下的 /etc/shadow 文件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/css/">
+            <span class="level-start">
+                <span class="level-item">css</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/git/">
+            <span class="level-start">
+                <span class="level-item">git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hotkey/">
+            <span class="level-start">
+                <span class="level-item">hotkey</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/html/">
+            <span class="level-start">
+                <span class="level-item">html</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/http/">
+            <span class="level-start">
+                <span class="level-item">http</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/js/">
+            <span class="level-start">
+                <span class="level-item">js</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">23</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/npm/">
+            <span class="level-start">
+                <span class="level-item">npm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/proxy/">
+            <span class="level-start">
+                <span class="level-item">proxy</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/security/">
+            <span class="level-start">
+                <span class="level-item">security</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/test/">
+            <span class="level-start">
+                <span class="level-item">test</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/tools/">
+            <span class="level-start">
+                <span class="level-item">tools</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 13.33px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/a/" style="font-size: 10px;">a</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 16.67px;">error</a> <a href="/tags/excel/" style="font-size: 13.33px;">excel</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/module/" style="font-size: 20px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 13.33px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 20px;">syntax</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 13.33px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 13.33px;">xlsx</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    LC&amp;MC
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 shinekidd&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
