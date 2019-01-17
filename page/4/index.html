@@ -145,6 +145,193 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-11-10T16:00:00.000Z">2017-11-11</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/css/">css</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 685 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/css/2017/11/11/">css 时钟</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>用 CSS3 画一个时钟，由定时器驱动，代码有点长。。。</p>
+</blockquote>
+
+<style>
+/* 轮廓 */
+#example_clock {
+  margin: 1.0em auto;
+  width: 22.0em;
+  height: 22.0em;
+  position: relative;
+  border: 1.0em solid rgba(0, 0, 0, 0.7);
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 1.5em #333;
+}
+/* 12 个刻度 */
+#example_clock #example_tick ins {
+  display: block;
+  width: 19.8em;
+  height: 0.3em;
+  border-radius: 0.3em;
+  background-image: linear-gradient(90deg, red 6%, transparent 6%, transparent 94%, red 94%, red 100%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -0.15em 0 0 -9.9em;
+}
+#example_clock #example_tick ins:nth-child(n+3) {
+  background-image: linear-gradient(90deg, grey 6%, transparent 6%, transparent 94%, grey 94%, grey 100%);
+}
+#example_clock #example_tick ins:first-child {
+  transform: rotateZ(90deg);
+}
+#example_clock #example_tick ins:nth-child(3) {
+  transform: rotateZ(30deg);
+}
+#example_clock #example_tick ins:nth-child(4) {
+  transform: rotateZ(-30deg);
+}
+#example_clock #example_tick ins:nth-child(5) {
+  transform: rotateZ(60deg);
+}
+#example_clock #example_tick ins:nth-child(6) {
+  transform: rotateZ(-60deg);
+}
+/* 时针 */
+#example_hour {
+  width: 0.5em;
+  height: 5.0em;
+  border-radius: 0.5em / 7.5em 7.5em 0.5em 0.5em;
+  background-color: #00f;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  margin: -0.5em 0 0 -.25em;
+  transform-origin: bottom;
+}
+/* 分针 */
+#example_minute {
+  width: 0.4em;
+  height: 6.0em;
+  border-radius: 0.4em / 10.0em 10.0em 0.4em 0.4em;
+  background-color: #0f0;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  margin: 0.2em 0 0 -0.2em;
+  transform-origin: bottom;
+}
+/* 指针的轴 */
+#example_dot {
+  width: 1.0em;
+  height: 1.0em;
+  border-radius: 50%;
+  background-color: rgba(10, 30, 105, .7);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -0.5em 0 0 -0.5em;
+}
+#example_dot::after {
+  content: "";
+  display: block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background-color: #f00;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -0.25em 0 0 -0.25em;
+}
+/* 秒针 */
+#example_second {
+  width: 0.2em;
+  height: 10.0em;
+  border-radius: 0.2em / 12.5em 12.5em 0.2em 0.2em;
+  background-color: #f00;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  margin: -0.1em 0 0 -0.1em;
+  transform-origin: bottom;
+}
+</style>
+<div id="example_clock">
+  <div id="example_tick">
+    <ins></ins>
+    <ins></ins>
+    <ins></ins>
+    <ins></ins>
+    <ins></ins>
+    <ins></ins>
+  </div>
+  <div id="example_hour"></div>
+  <div id="example_minute"></div>
+  <div id="example_dot"></div>
+  <div id="example_second"></div>
+</div>
+<script>
+  var colockTimer = null //计时器
+  var hourTick = document.querySelector('#example_hour')//时针
+  var minuteTick = document.querySelector('#example_minute')//分针
+  var secondTick = document.querySelector('#example_second')//秒针
+  var second = 0, minute = 0, hour = 0, sDeg = 0, mDeg = 0, hDeg = 0
+  clearInterval(colockTimer)
+  colockTimer = setInterval(function () {
+    var date = new Date()
+    hour = date.getHours()
+    minute = date.getMinutes()
+    second = date.getSeconds()
+    hDeg = (hour % 12 + minute / 60 + second / 3600) * 30
+    mDeg = (minute + second / 60) * 6
+    sDeg = second * 6
+    hourTick.style.transform  = 'rotateZ('+ hDeg + 'deg)'
+    minuteTick.style.transform  = 'rotateZ('+ mDeg + 'deg)'
+    secondTick.style.transform  = 'rotateZ('+ sDeg + 'deg)'
+  }, 100)
+</script>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/css/2017/11/11/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2017-11-03T16:00:00.000Z">2017-11-04</time>
                 
                 <div class="level-item">
@@ -527,56 +714,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-10-06T16:00:00.000Z">2017-10-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/hotkey/">hotkey</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 602 words)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/hotkey/2017/10/07/">chrome 的快捷键</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>Google chrome 是最受程序员喜爱的浏览器（没有之一），它 UI 简洁大方，网页性能十分出色，调试功能十分强大，插件非常丰富！还支持一大波 <strong>快捷键</strong>！</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/hotkey/2017/10/07/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -653,6 +790,19 @@
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-07T16:00:00.000Z">2018-09-08</time></div>
+                    <a href="/tools/2018/09/08/" class="has-link-black-ter is-size-6">在 Vue 中使用 i18n 做国际化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/tools/">tools</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-27T16:00:00.000Z">2018-04-28</time></div>
                     <a href="/linux/2018/04/28/" class="has-link-black-ter is-size-6">linux 目录一览</a>
                     <p class="is-size-7 is-uppercase">
@@ -668,19 +818,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-20T16:00:00.000Z">2018-04-21</time></div>
                     <a href="/linux/2018/04/21/" class="has-link-black-ter is-size-6">linux 运行级别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-16T16:00:00.000Z">2018-04-17</time></div>
-                    <a href="/linux/2018/04/17/" class="has-link-black-ter is-size-6">linux 文件、目录的权限</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
@@ -794,7 +931,7 @@
                 <span class="level-item">tools</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li>
             </ul>
@@ -825,6 +962,17 @@
             <a class="level is-marginless" href="/archives/2018/11/">
                 <span class="level-start">
                     <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -1008,7 +1156,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12.5px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 17.5px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 15px;">error</a> <a href="/tags/excel/" style="font-size: 12.5px;">excel</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 17.5px;">http</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 17.5px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 17.5px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12.5px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12.5px;">xlsx</a>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12.5px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 17.5px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 15px;">error</a> <a href="/tags/excel/" style="font-size: 12.5px;">excel</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 17.5px;">http</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 17.5px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 17.5px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12.5px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12.5px;">xlsx</a>
     </div>
 </div>
 
