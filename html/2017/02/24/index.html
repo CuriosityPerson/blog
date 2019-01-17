@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>html5 新增的浏览器特性 - LC &amp; MC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="web 浏览器的升级，是 HTML5 的一部分，使得前端可以开发更加强大复杂的 web 应用。">
+<meta name="keywords" content="h5-browser">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5 新增的浏览器特性">
+<meta property="og:url" content="//shinekidd.github.io/html/2017/02/24/index.html">
+<meta property="og:site_name" content="LC &amp; MC">
+<meta property="og:description" content="web 浏览器的升级，是 HTML5 的一部分，使得前端可以开发更加强大复杂的 web 应用。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-17T01:49:33.864Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="html5 新增的浏览器特性">
+<meta name="twitter:description" content="web 浏览器的升级，是 HTML5 的一部分，使得前端可以开发更加强大复杂的 web 应用。">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai-sublime.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                LC&amp;MC
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-02-23T16:00:00.000Z">2017-02-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/html/">html</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 minutes read (About 2414 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                html5 新增的浏览器特性
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>web 浏览器的升级，是 HTML5 的一部分，使得前端可以开发更加强大复杂的 web 应用。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="网页存储"><a href="#网页存储" class="headerlink" title="网页存储"></a>网页存储</h2><h3 id="Application-Cache"><a href="#Application-Cache" class="headerlink" title="Application Cache"></a>Application Cache</h3><blockquote>
+<p><code>该特性已经从 Web 标准中删除，建议开发人员改用 Service workers 代替</code> </p>
+</blockquote>
+<h3 id="localStorage-sessionStorage"><a href="#localStorage-sessionStorage" class="headerlink" title="localStorage sessionStorage"></a>localStorage sessionStorage</h3><p>浏览器增加了 Storage 对象，用于本地数据存储的功能，不同浏览器的存储空间在 5M - 8M 不等。主流浏览器都支持了该功能。</p>
+<p>localStorage sessionStorage 是 Storage 的实例，它们有相同的接口。不同的是 localStorage 能持久的存储数据，sessionStorage 存储的数据在回话结束（关闭窗口）会被清空。</p>
+<p>以 localStorage 的 API 为例</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 写入数据</span></span><br><span class="line">localStorage.setItem(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>)</span><br><span class="line"><span class="hljs-comment">// 读取数据</span></span><br><span class="line">localStorage.getItem(<span class="hljs-string">'key'</span>)</span><br><span class="line"><span class="hljs-comment">// 清除数据</span></span><br><span class="line">localStorage.removeItem(<span class="hljs-string">'key'</span>)</span><br><span class="line"><span class="hljs-comment">// 清空</span></span><br><span class="line">localStorage.clear()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><em>注意</em><br>Storage 是以键值对的方式存储数据，键值都是字符串！<br><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(<span class="hljs-string">'null'</span>, <span class="hljs-literal">null</span>)</span><br><span class="line">localStorage.getItem(<span class="hljs-string">'null'</span>) <span class="hljs-comment">// "null"</span></span><br><span class="line">localStorage.setItem(<span class="hljs-string">'obj'</span>, &#123; <span class="hljs-attr">str</span>: <span class="hljs-string">'17'</span> &#125;)</span><br><span class="line">localStorage.getItem(<span class="hljs-string">'obj'</span>) <span class="hljs-comment">// "[object Object]"</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>建议使用 JSON.stringify() 转换成字符串写入，读取时 JSON.parse() 还原。避免直接写入简单的值类型（比如字符串 ‘10’，数字 10），以免读取的值的类型与写入时不同。</p>
+</blockquote>
+<h3 id="Web-SQL"><a href="#Web-SQL" class="headerlink" title="Web SQL"></a>Web SQL</h3><blockquote>
+<p><code>在 2010 年 11 月 18 日，W3C 宣布弃用 Web SQL 数据库规范</code></p>
+</blockquote>
+<h3 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h3><p>IndexedDB 是一种底层 API，用于客户端存储大量结构化数据(包括, 文件/ blobs)。该 API 使用索引来实现对该数据的高性能搜索。相关的第三方库有 PouchDB dexie.js</p>
+<h2 id="设备信息访问"><a href="#设备信息访问" class="headerlink" title="设备信息访问"></a>设备信息访问</h2><blockquote>
+<p><em>注意</em><br>如下 API 均存在兼容性问题，谨慎使用！！</p>
+</blockquote>
+<h3 id="网络状态"><a href="#网络状态" class="headerlink" title="网络状态"></a>网络状态</h3><h4 id="navigator-onLine"><a href="#navigator-onLine" class="headerlink" title="navigator.onLine"></a>navigator.onLine</h4><p>返回一个布尔值，表示当前浏览器是否在线状态</p>
+<h4 id="navigator-connection"><a href="#navigator-connection" class="headerlink" title="navigator.connection"></a>navigator.connection</h4><p>navigator.connection 是只读的，提供一个 NetworkInformation 对象来获取设备的网络连接信息。例如用户设备的当前带宽或连接是否被计量， 这可以用于基于用户的连接来选择高清晰度内容或低清晰度内容。</p>
+<p>示例：你当前浏览器检测的网络情况如下</p>
+
+<dl style="background-color: #eee">
+  <dt>是否在线</dt>
+  <dd class="online"></dd>
+  <dt>有效带宽的估计值</dt>
+  <dd class="downlink"></dd>
+  <dt>有效的往返时间估计(ms)</dt>
+  <dd class="rtt"></dd>
+  <dt>连接的有效类型</dt>
+  <dd class="effectiveType"></dd>
+</dl>
+<script>
+  getNetworkInfo()
+  function getNetworkInfo () {
+    var connection = navigator.connection
+    document.querySelector('dd.online').innerText = 'online: ' + navigator.onLine
+    document.querySelector('dd.downlink').innerText = 'downlink: ' + connection.downlink
+    document.querySelector('dd.rtt').innerText = 'rtt: ' + connection.rtt
+    document.querySelector('dd.effectiveType').innerText = 'effectiveType: ' + connection.effectiveType
+  }
+  navigator.connection.addEventListener('change', function(event) {
+    confirm('network is changed')
+    getNetworkInfo()
+  })
+</script>
+
+<p>实现代码如下：</p>
+<figure class="highlight html hljs"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">dl</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: #eee"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>是否在线<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"online"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>有效带宽的估计值<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"downlink"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>有效的往返时间估计(ms)<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"rtt"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>连接的有效类型<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"effectiveType"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">getNetworkInfo()</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNetworkInfo</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> connection = navigator.connection</span><br><span class="line">  <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'dd.online'</span>).innerText = <span class="hljs-string">'online: '</span> + navigator.onLine</span><br><span class="line">  <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'dd.downlink'</span>).innerText = <span class="hljs-string">'downlink: '</span> + connection.downlink</span><br><span class="line">  <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'dd.rtt'</span>).innerText = <span class="hljs-string">'rtt: '</span> + connection.rtt</span><br><span class="line">  <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'dd.effectiveType'</span>).innerText = <span class="hljs-string">'effectiveType: '</span> + connection.effectiveType</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// 监听网络状态变化</span></span><br><span class="line">navigator.connection.addEventListener(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  confirm(<span class="hljs-string">'network is changed'</span>)</span><br><span class="line">  getNetworkInfo()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="硬件访问"><a href="#硬件访问" class="headerlink" title="硬件访问"></a>硬件访问</h3><h4 id="battery"><a href="#battery" class="headerlink" title="battery"></a>battery</h4><p>Battery API 提供了有关系统充电级别的信息并提供了通过电池等级或者充电状态的改变提醒用户的事件。 这个可以在设备电量低的时候调整应用的资源使用状态，或者在电池用尽前保存应用中的修改以防数据丢失。</p>
+<p>示例：你的设备当前的电池信息如下</p>
+
+<div class="battery-info" style="background-color: #eee;"></div>
+<script>
+  navigator.getBattery().then(function(battery) {
+    getBatteryInfo(battery)
+    // 充电状态变化
+    battery.addEventListener('chargingchange', function() {
+      getBatteryInfo(battery)
+    })
+    // 电量变化
+    battery.addEventListener('levelchange', function() {
+      getBatteryInfo(battery)
+    })
+    // 充电时长变化
+    battery.addEventListener('chargingtimechange', function() {
+      getBatteryInfo(battery)
+    })
+    // 放电时长变化
+    battery.addEventListener('dischargingtimechange', function() {
+      getBatteryInfo(battery)
+    })
+  })
+  function getBatteryInfo(battery) {
+    var info = ''
+    info += '是否在充电：' + battery.charging ? '是' : '否' + '\n'
+    info += '剩余电量：' + battery.level * 100 + '%' + '\n'
+    info += '充电时间：' + battery.chargingTime + '秒' + '\n'
+    info += '放电时间：' + battery.dischargingTime + '秒' + '\n'
+    document.querySelector('.battery-info').innerText = info
+  }
+</script>
+
+<p>实现代码如下：</p>
+<figure class="highlight html hljs"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"battery-info"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: #eee;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">navigator.getBattery().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">battery</span>) </span>&#123;</span><br><span class="line">  getBatteryInfo(battery)</span><br><span class="line">  <span class="hljs-comment">// 充电状态变化</span></span><br><span class="line">  battery.addEventListener(<span class="hljs-string">'chargingchange'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    getBatteryInfo(battery)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-comment">// 电量变化</span></span><br><span class="line">  battery.addEventListener(<span class="hljs-string">'levelchange'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    getBatteryInfo(battery)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-comment">// 充电时长变化</span></span><br><span class="line">  battery.addEventListener(<span class="hljs-string">'chargingtimechange'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    getBatteryInfo(battery)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-comment">// 放电时长变化</span></span><br><span class="line">  battery.addEventListener(<span class="hljs-string">'dischargingtimechange'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    getBatteryInfo(battery)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBatteryInfo</span>(<span class="hljs-params">battery</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> info = <span class="hljs-string">''</span></span><br><span class="line">  info += <span class="hljs-string">'是否在充电：'</span> + battery.charging ? <span class="hljs-string">'是'</span> : <span class="hljs-string">'否'</span> + <span class="hljs-string">'\n'</span></span><br><span class="line">  info += <span class="hljs-string">'剩余电量：'</span> + battery.level * <span class="hljs-number">100</span> + <span class="hljs-string">'%'</span> + <span class="hljs-string">'\n'</span></span><br><span class="line">  info += <span class="hljs-string">'充电时间：'</span> + battery.chargingTime + <span class="hljs-string">'秒'</span> + <span class="hljs-string">'\n'</span></span><br><span class="line">  info += <span class="hljs-string">'放电时间：'</span> + battery.dischargingTime + <span class="hljs-string">'秒'</span> + <span class="hljs-string">'\n'</span></span><br><span class="line">  <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.battery-info'</span>).innerText = info</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Gyro"><a href="#Gyro" class="headerlink" title="Gyro"></a>Gyro</h4><p>deviceorientation 事件在方向传感器输出新数据的时候触发。其数据系传感器与地球坐标系相比较所得，也就是说在设备上可能会采用设备地磁计的数据。</p>
+<p>示例：带有方向传感器的设备（手机）上查看</p>
+
+<div class="Gyro" style="background-color: #eee"></div>
+<script>
+  window.addEventListener('deviceorientation', function(event) {
+    getGyroInfo(event)
+  }, true)
+  function getGyroInfo (event) {
+    var info = ''
+    // gamma: 从左到右
+    info += 'x: ' + event.gamma + '\n'
+    // beta: 从前到后的运动
+    info += 'y: ' + event.beta + '\n'
+    // alpha: 在Z轴上的角度
+    info += 'z: ' + event.alpha
+    document.querySelector('.Gyro').innerText = info
+  }
+</script>
+
+<p>实现代码如下：</p>
+<figure class="highlight html hljs"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"Gyro"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: #eee"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'deviceorientation'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  getGyroInfo(event)</span><br><span class="line">&#125;, <span class="hljs-literal">true</span>)</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGyroInfo</span> (<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> info = <span class="hljs-string">''</span></span><br><span class="line">  <span class="hljs-comment">// gamma: 从左到右</span></span><br><span class="line">  info += <span class="hljs-string">'x: '</span> + event.gamma + <span class="hljs-string">'\n'</span></span><br><span class="line">  <span class="hljs-comment">// beta: 从前到后的运动</span></span><br><span class="line">  info += <span class="hljs-string">'y: '</span> + event.beta + <span class="hljs-string">'\n'</span></span><br><span class="line">  <span class="hljs-comment">// alpha: 在Z轴上的角度</span></span><br><span class="line">  info += <span class="hljs-string">'z: '</span> + event.alpha</span><br><span class="line">  <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.Gyro'</span>).innerText = info</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="screen-orientation"><a href="#screen-orientation" class="headerlink" title="screen orientation"></a>screen orientation</h4><p>设备屏幕方向发生变化时，screen.orientation 会触发 change 事件，我们可以根据 screen.orientation.type 来判断是横屏还是竖屏。</p>
+<p>CSS3 媒体查询也可以查询屏幕方向</p>
+<p>示例：</p>
+
+<style>
+  @media all and (orientation: portrait) {
+    .screen-orientation::after {
+      content: '(竖屏)';
+      color: #f40;
+    }
+  }
+  @media all and (orientation: landscape) {
+    .screen-orientation::after {
+      content: '(横屏)';
+      color: #f4f;
+    }
+  }
+</style>
+<div class="screen-orientation"></div>
+<script>
+  screen.orientation.addEventListener('change', function() {
+    getScreenOrientation()
+  })
+  function getScreenOrientation() {
+    document.querySelector('.screen-orientation').innerText = '屏幕方向是：' + screen.orientation.type + '  '
+  }
+  getScreenOrientation()
+</script>
+
+<p>实现代码如下：</p>
+<figure class="highlight css hljs"><figcaption><span>css</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@<span class="hljs-keyword">media</span> all and (orientation: portrait) &#123;</span><br><span class="line">  <span class="hljs-selector-class">.screen-orientation</span><span class="hljs-selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-string">'(竖屏)'</span>;</span><br><span class="line">    <span class="hljs-attribute">color</span>: <span class="hljs-number">#f40</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="hljs-keyword">media</span> all and (orientation: landscape) &#123;</span><br><span class="line">  <span class="hljs-selector-class">.screen-orientation</span><span class="hljs-selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-string">'(横屏)'</span>;</span><br><span class="line">    <span class="hljs-attribute">color</span>: <span class="hljs-number">#f4f</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"screen-orientation"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">screen.orientation.addEventListener(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  getScreenOrientation()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getScreenOrientation</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.screen-orientation'</span>).innerText = <span class="hljs-string">'屏幕方向是：'</span> + screen.orientation.type + <span class="hljs-string">'  '</span></span><br><span class="line">&#125;</span><br><span class="line">getScreenOrientation()</span><br></pre></td></tr></table></figure>
+<h4 id="devicelight"><a href="#devicelight" class="headerlink" title="devicelight"></a>devicelight</h4><p>环境光传感器数据变化时，触发 window 的 devicelight 事件，我们从 event 的 value 属性获得环境光的强度。</p>
+<p>当前只有 Edge Firfox for Android 支持，但我手机上试了，并没有成功！！！</p>
+<p>示例：</p>
+
+<progress class="devicelight" value="0"></progress>
+<script>
+  window.ondevicelight = function(event) {
+    document.querySelector('.devicelight').value = event.value;
+  }
+</script>
+
+<p>实现代码如下：</p>
+<figure class="highlight html hljs"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">progress</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"devicelight"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"0"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">progress</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-built_in">window</span>.ondevicelight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.devicelight'</span>).value = event.value;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="userproximity"><a href="#userproximity" class="headerlink" title="userproximity"></a>userproximity</h4><p>距离传感器的数据变化时，触发 window 的 userproximity 事件，通过事件的 event.near 属性可以知道是否正在接近传感器</p>
+<p>目前只有 Firefox 支持，但我的电脑没有距离传感器</p>
+<p>示例：</p>
+
+<div class="userproximity"></div>
+<script>
+  window.addEventListener('userproximity', function(event) {
+    if (event.near) {
+      document.querySelector('.userproximity').innerText = '正在靠近传感器'
+    } else {
+      document.querySelector('.userproximity').innerText = '正在远离传感器'
+    }
+  })
+</script>
+
+<p>实现代码如下：</p>
+<figure class="highlight html hljs"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"userproximity"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'userproximity'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (event.near) &#123;</span><br><span class="line">    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.userproximity'</span>).innerText = <span class="hljs-string">'正在靠近传感器'</span></span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.userproximity'</span>).innerText = <span class="hljs-string">'正在远离传感器'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="网络访问"><a href="#网络访问" class="headerlink" title="网络访问"></a>网络访问</h2><h3 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h3><h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><h2 id="桌面通知"><a href="#桌面通知" class="headerlink" title="桌面通知"></a>桌面通知</h2><h3 id="Notification"><a href="#Notification" class="headerlink" title="Notification"></a>Notification</h3><p>构造函数 Notification 用于发布桌面消息通知。参数解析如下：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param title 一定会被显示的通知标题</span></span><br><span class="line"><span class="hljs-comment"> * @param options.dir 文字的方向；它的值可以是 auto（自动）, ltr（从左到右）, or rtl（从右到左）</span></span><br><span class="line"><span class="hljs-comment"> * @param options.lang 指定通知中所使用的语言。这个字符串必须在 BCP 47 language tag 文档中是有效的。</span></span><br><span class="line"><span class="hljs-comment"> * @param options.body 通知中额外显示的字符串</span></span><br><span class="line"><span class="hljs-comment"> * @param options.tag  赋予通知一个ID，以便在必要的时候对通知进行刷新、替换或移除。</span></span><br><span class="line"><span class="hljs-comment"> * @param options.icon 一个图片的URL，将被用于显示通知的图标。</span></span><br><span class="line"><span class="hljs-comment"> * </span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">new</span> Notification(title[, options])</span><br></pre></td></tr></table></figure>
+<h3 id="请求权限"><a href="#请求权限" class="headerlink" title="请求权限"></a>请求权限</h3><p>首先要请求用户许可桌面通知，用户同意后才能弹出通知。调用 <code>Notification.requestPermission()</code> 方法后浏览器会弹出提示框，返回一个 Promise ，值是 default (用户关闭了提示框)， granted (用户允许了)， denied (用户拒绝了)。如果值是非 default ，浏览器会记住用户的选择。再次调用该方法不再弹出提示。</p>
+<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><p>关闭通知</p>
+<p>notification.close()</p>
+<h3 id="实例事件"><a href="#实例事件" class="headerlink" title="实例事件"></a>实例事件</h3><table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>click</td>
+<td>处理 click 事件的处理。每当用户点击通知时被触发。</td>
+</tr>
+<tr>
+<td>show</td>
+<td>处理 show 事件的处理。当通知显示的时候被触发。</td>
+</tr>
+<tr>
+<td>close</td>
+<td>处理 close 事件的处理。当用户关闭通知时被触发。</td>
+</tr>
+<tr>
+<td>error</td>
+<td>处理 error 事件的处理。每当通知遇到错误时被触发。</td>
+</tr>
+</tbody>
+</table>
+<p>示例：</p>
+
+<div style="background-color: #eee; margin: 15px auto;padding: 10px">
+  <button onclick="requestPermission()">请求权限</button>
+  <button onclick="notice()">测试通知</button>
+</div>
+<script>
+  var permission = Notification.permission
+  function requestPermission() {
+    Notification.requestPermission().then(res => {
+      res === 'granted' && alert('用户允许桌面通知')
+      res === 'denied' && alert('用户拒绝桌面通知')
+      res === 'default' && alert('用户还没决定要不要允许桌面通知')
+      permission = res
+    })
+  }
+  function notice() {
+    if (permission !== 'granted') {
+      return alert('用户没有允许桌面通知')
+    }
+    new Notification('来自 ShineKidd 的问候', {
+      body: '欢迎访问 ' + location.host,
+      icon: 'https://octodex.github.com/images/mountietocat.png'
+    })
+  }
+</script>
+
+<blockquote>
+<p>chrom 每次最多只显示 3 个通知，多于 3 个通知时。前一个通知关闭，才显示下一个通知。</p>
+</blockquote>
+<p>实现代码如下：</p>
+<figure class="highlight html hljs"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: #eee"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"requestPermission()"</span>&gt;</span>请求权限<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"notice()"</span>&gt;</span>测试通知<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">var</span> permission = Notification.permission</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">requestPermission</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    Notification.requestPermission().then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">      res === <span class="hljs-string">'granted'</span> &amp;&amp; alert(<span class="hljs-string">'用户允许桌面通知'</span>)</span></span><br><span class="line"><span class="hljs-javascript">      res === <span class="hljs-string">'denied'</span> &amp;&amp; alert(<span class="hljs-string">'用户拒绝桌面通知'</span>)</span></span><br><span class="line"><span class="hljs-javascript">      res === <span class="hljs-string">'default'</span> &amp;&amp; alert(<span class="hljs-string">'用户还没决定要不要允许桌面通知'</span>)</span></span><br><span class="line"><span class="hljs-undefined">      permission = res</span></span><br><span class="line"><span class="hljs-undefined">    &#125;)</span></span><br><span class="line"><span class="hljs-undefined">  &#125;</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">notice</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">if</span> (permission !== <span class="hljs-string">'granted'</span>) &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">return</span> alert(<span class="hljs-string">'用户没有允许桌面通知'</span>)</span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">new</span> Notification(<span class="hljs-string">'来自 ShineKidd 的问候'</span>, &#123;</span></span><br><span class="line"><span class="hljs-javascript">      body: <span class="hljs-string">'欢迎访问 '</span> + location.host,</span></span><br><span class="line"><span class="hljs-javascript">      icon: <span class="hljs-string">'https://octodex.github.com/images/mountietocat.png'</span></span></span><br><span class="line"><span class="hljs-undefined">    &#125;)</span></span><br><span class="line"><span class="hljs-undefined">  &#125;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h3 id="Web-Workers"><a href="#Web-Workers" class="headerlink" title="Web Workers"></a>Web Workers</h3><p>Web 应用程序可以通过 Web Workers 在与主线程分离的后台线程中运行一个脚本操作。这样做的好处是可以在独立的线程中执行费时的处理任务，从而允许主（通常是UI）线程不被阻塞/放慢。</p>
+<center> — <em>The End</em> — </center>
+
+
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/h5-browser/">h5-browser</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/html/2017/02/25/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">关于 a 标签</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/html/2017/02/22/">
+                <span class="level-item">html5 新增的多媒体特性</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'html/2017/02/24/',
+		owner: 'ShineKidd',
+		repo: 'blog',
+		oauth: {
+			client_id: '0f25d421879bfe388e0f',
+			client_secret: 'fe74c5e65d1b3e93a1b6432f588533543d92750c',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#网页存储">
+        <span class="has-mr-6">1</span>
+        <span>网页存储</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Application-Cache">
+        <span class="has-mr-6">1.1</span>
+        <span>Application Cache</span>
+        </a></li><li>
+        <a class="is-flex" href="#localStorage-sessionStorage">
+        <span class="has-mr-6">1.2</span>
+        <span>localStorage sessionStorage</span>
+        </a></li><li>
+        <a class="is-flex" href="#Web-SQL">
+        <span class="has-mr-6">1.3</span>
+        <span>Web SQL</span>
+        </a></li><li>
+        <a class="is-flex" href="#IndexedDB">
+        <span class="has-mr-6">1.4</span>
+        <span>IndexedDB</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#设备信息访问">
+        <span class="has-mr-6">2</span>
+        <span>设备信息访问</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#网络状态">
+        <span class="has-mr-6">2.1</span>
+        <span>网络状态</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#navigator-onLine">
+        <span class="has-mr-6">2.1.1</span>
+        <span>navigator.onLine</span>
+        </a></li><li>
+        <a class="is-flex" href="#navigator-connection">
+        <span class="has-mr-6">2.1.2</span>
+        <span>navigator.connection</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#硬件访问">
+        <span class="has-mr-6">2.2</span>
+        <span>硬件访问</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#battery">
+        <span class="has-mr-6">2.2.1</span>
+        <span>battery</span>
+        </a></li><li>
+        <a class="is-flex" href="#Gyro">
+        <span class="has-mr-6">2.2.2</span>
+        <span>Gyro</span>
+        </a></li><li>
+        <a class="is-flex" href="#screen-orientation">
+        <span class="has-mr-6">2.2.3</span>
+        <span>screen orientation</span>
+        </a></li><li>
+        <a class="is-flex" href="#devicelight">
+        <span class="has-mr-6">2.2.4</span>
+        <span>devicelight</span>
+        </a></li><li>
+        <a class="is-flex" href="#userproximity">
+        <span class="has-mr-6">2.2.5</span>
+        <span>userproximity</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#网络访问">
+        <span class="has-mr-6">3</span>
+        <span>网络访问</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#fetch">
+        <span class="has-mr-6">3.1</span>
+        <span>fetch</span>
+        </a></li><li>
+        <a class="is-flex" href="#WebSocket">
+        <span class="has-mr-6">3.2</span>
+        <span>WebSocket</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#桌面通知">
+        <span class="has-mr-6">4</span>
+        <span>桌面通知</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Notification">
+        <span class="has-mr-6">4.1</span>
+        <span>Notification</span>
+        </a></li><li>
+        <a class="is-flex" href="#请求权限">
+        <span class="has-mr-6">4.2</span>
+        <span>请求权限</span>
+        </a></li><li>
+        <a class="is-flex" href="#实例方法">
+        <span class="has-mr-6">4.3</span>
+        <span>实例方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#实例事件">
+        <span class="has-mr-6">4.4</span>
+        <span>实例事件</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#多线程">
+        <span class="has-mr-6">5</span>
+        <span>多线程</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Web-Workers">
+        <span class="has-mr-6">5.1</span>
+        <span>Web Workers</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-15T02:57:12.977Z">2019-01-15</time></div>
+                    <a href="/uncategorized/2019/01/15/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-27T00:54:50.579Z">2018-11-27</time></div>
+                    <a href="/uncategorized/2018/11/27/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-27T16:00:00.000Z">2018-04-28</time></div>
+                    <a href="/linux/2018/04/28/" class="has-link-black-ter is-size-6">linux 目录一览</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-20T16:00:00.000Z">2018-04-21</time></div>
+                    <a href="/linux/2018/04/21/" class="has-link-black-ter is-size-6">linux 运行级别</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-16T16:00:00.000Z">2018-04-17</time></div>
+                    <a href="/linux/2018/04/17/" class="has-link-black-ter is-size-6">linux 文件、目录的权限</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/css/">
+            <span class="level-start">
+                <span class="level-item">css</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/git/">
+            <span class="level-start">
+                <span class="level-item">git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hotkey/">
+            <span class="level-start">
+                <span class="level-item">hotkey</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/html/">
+            <span class="level-start">
+                <span class="level-item">html</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/http/">
+            <span class="level-start">
+                <span class="level-item">http</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/js/">
+            <span class="level-start">
+                <span class="level-item">js</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">24</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/npm/">
+            <span class="level-start">
+                <span class="level-item">npm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/proxy/">
+            <span class="level-start">
+                <span class="level-item">proxy</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/security/">
+            <span class="level-start">
+                <span class="level-item">security</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/test/">
+            <span class="level-start">
+                <span class="level-item">test</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/tools/">
+            <span class="level-start">
+                <span class="level-item">tools</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12.5px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 17.5px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 15px;">error</a> <a href="/tags/excel/" style="font-size: 12.5px;">excel</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 17.5px;">http</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 17.5px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 17.5px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12.5px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12.5px;">xlsx</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    LC&amp;MC
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 shinekidd&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

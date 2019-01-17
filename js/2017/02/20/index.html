@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>html5 新增的 API - LC &amp; MC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="HTML 5 新增了一些有意思的 API，本文介绍基本用法并附上部分 demo">
+<meta name="keywords" content="api">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5 新增的 API">
+<meta property="og:url" content="//shinekidd.github.io/js/2017/02/20/index.html">
+<meta property="og:site_name" content="LC &amp; MC">
+<meta property="og:description" content="HTML 5 新增了一些有意思的 API，本文介绍基本用法并附上部分 demo">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-16T11:06:04.536Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="html5 新增的 API">
+<meta name="twitter:description" content="HTML 5 新增了一些有意思的 API，本文介绍基本用法并附上部分 demo">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai-sublime.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                LC&amp;MC
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-02-19T16:00:00.000Z">2017-02-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/js/">js</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    19 minutes read (About 2803 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                html5 新增的 API
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>HTML 5 新增了一些有意思的 API，本文介绍基本用法并附上部分 demo</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="新的-DOM-选择器"><a href="#新的-DOM-选择器" class="headerlink" title="新的 DOM 选择器"></a>新的 DOM 选择器</h2><h3 id="getElementBy"><a href="#getElementBy" class="headerlink" title="getElementBy"></a>getElementBy</h3><p>之前我们是这样选取 DOM 的</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'my_form'</span>)</span><br><span class="line"><span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'from'</span>)</span><br><span class="line"><span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">'.form'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="querySelector"><a href="#querySelector" class="headerlink" title="querySelector"></a>querySelector</h3><p>现在有了媲美 jQuery 的 API</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'#my_form'</span>)</span><br><span class="line"><span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'ul &gt; .item'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="操作类名"><a href="#操作类名" class="headerlink" title="操作类名"></a>操作类名</h2><h3 id="classList"><a href="#classList" class="headerlink" title="classList"></a>classList</h3><p>DOM 上部署了 classList 属性，可以访问 DOM 所有的类名，并且可以操作该属性</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'div'</span>)</span><br><span class="line">div.classList <span class="hljs-comment">// DOMTokenList(2) ["item", "active", value: "item active"]</span></span><br></pre></td></tr></table></figure>
+<h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><p>增加类名，支持多个参数，逗号分隔<br><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.classList.add(<span class="hljs-string">'animated'</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h3><p>移除类名，支持多个参数，逗号分隔</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.classList.remove(<span class="hljs-string">'active'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="contains"><a href="#contains" class="headerlink" title="contains"></a>contains</h3><p>判断某个类名是否存在</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> isAnimated = div.classList.contains(<span class="hljs-string">'animated'</span>) <span class="hljs-comment">// 返回布尔值</span></span><br></pre></td></tr></table></figure>
+<h3 id="toggle"><a href="#toggle" class="headerlink" title="toggle"></a>toggle</h3><p>删除添加之间切换一个类名</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.classList.toggle(<span class="hljs-string">'animated'</span>, !isAnimated)</span><br></pre></td></tr></table></figure>
+<h2 id="访问历史-API"><a href="#访问历史-API" class="headerlink" title="访问历史 API"></a>访问历史 API</h2><p>history 对象 HTML5 之前含有的 API</p>
+<h3 id="forward-back-go"><a href="#forward-back-go" class="headerlink" title="forward() back() go()"></a>forward() back() go()</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 控制浏览历史前进一个记录</span></span><br><span class="line"><span class="hljs-built_in">window</span>.history.forward()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 控制浏览历史后退一个记录</span></span><br><span class="line"><span class="hljs-built_in">window</span>.history.back()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 控制浏览历史跳转到指定的一个记录，0 是刷新，正整数是前进，负整数是后退</span></span><br><span class="line"><span class="hljs-built_in">window</span>.history.go(n)</span><br></pre></td></tr></table></figure>
+<p>从 HTML5 开始——提供了对 history 栈中内容的操作。</p>
+<h3 id="pushState"><a href="#pushState" class="headerlink" title="pushState"></a>pushState</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 这将使浏览器地址栏显示为 url，但并不会导致浏览器加载对应的页面</span></span><br><span class="line"><span class="hljs-comment"> * 甚至不会检查页面是否存在。</span></span><br><span class="line"><span class="hljs-comment"> * @param stateObj  在 onpopstate 事件中通过 event.state 能获取到该对象</span></span><br><span class="line"><span class="hljs-comment"> * @param title     历史纪录的标题，目前浏览器忽略该参数</span></span><br><span class="line"><span class="hljs-comment"> * @param url       可选，可以是相对路径、绝对路径（同相对路径一样处理）、query，不能是其他域名的 url</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-built_in">window</span>.history.pushState(stateObj, title [, url])</span><br></pre></td></tr></table></figure>
+<h3 id="replaceState"><a href="#replaceState" class="headerlink" title="replaceState"></a>replaceState</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 修改当前激活的历史记录条目，参数和 pushState 一样</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-built_in">window</span>.history.replaceState(stateObj, title [, url])</span><br></pre></td></tr></table></figure>
+<h3 id="onpopstate"><a href="#onpopstate" class="headerlink" title="onpopstate"></a>onpopstate</h3><p>调用 history.pushState() 或者 history.replaceState() 不会触发 popstate 事件. popstate 事件只会在浏览器某些行为下触发, 比如点击后退、前进按钮(或者在 JavaScript 中调用 history.back()、history.forward()、history.go() 方法)</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'popstate'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">even</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(event.state)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><em>注意</em><br>当网页加载时,各浏览器对 popstate 事件是否触发有不同的表现, Chrome 和 Safari 会触发 popstate 事件, 而 Firefox 不会<br>页面刷新（history.go(0)、location.reload()、真实的页面跳转）会导致 js 从新解析，也不会触发 popstate 事件</p>
+</blockquote>
+<h2 id="全屏-API"><a href="#全屏-API" class="headerlink" title="全屏 API"></a>全屏 API</h2><p>Element.requestFullscreen() 方法用于发出异步请求使元素进入全屏模式，全屏的元素背景色默认是黑色。</p>
+<h3 id="requestFullscreen"><a href="#requestFullscreen" class="headerlink" title="requestFullscreen"></a>requestFullscreen</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'video'</span>).addEventListener(<span class="hljs-string">'dblclick'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">  e.target.requestFullScreen()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>浏览器兼容性：需要前缀 webkit、moz、ms</p>
+<blockquote>
+<p>调用此 API 并不能保证元素一定能够进入全屏模式。如果元素被允许进入全屏幕模式，document 对象会收到一个 fullscreenchange 事件，通知调用者当前元素已经进入全屏模式。如果全屏请求不被许可，则会收到一个 fullscreenerror 事件。只有包含在顶层文档（top-level document）内部的标准HTML元素、&lt;svg&gt;元素和&lt;math&gt;元素，以及拥有 allowfullscreen 属性的 iframe 的内部元素可以进入全屏模式。这意味着在 frame 内部的元素，以及 object 的内部元素不能进入全屏模式</p>
+</blockquote>
+<h2 id="拖放操作"><a href="#拖放操作" class="headerlink" title="拖放操作"></a>拖放操作</h2><p>可以从桌面拖拽文件到浏览器的的 DOM ，也可以直接拖拽网页中的文字、图片、DOM 到 DOM。</p>
+<h3 id="拖拽属性"><a href="#拖拽属性" class="headerlink" title="拖拽属性"></a>拖拽属性</h3><p>含有 draggable=”true” 属性的 DOM 是可拖拽的</p>
+<h3 id="拖拽事件"><a href="#拖拽事件" class="headerlink" title="拖拽事件"></a>拖拽事件</h3><table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ondragstart</td>
+<td>拖拽开始，由被拖拽的对象触发</td>
+</tr>
+<tr>
+<td>ondrag</td>
+<td>拖拽过程中，由被拖拽的对象持续触发</td>
+</tr>
+<tr>
+<td>ondragend</td>
+<td>拖拽结束，由被拖拽的对象触发</td>
+</tr>
+<tr>
+<td>ondragenter</td>
+<td>进入放置区 DOM，由放置区 DOM 触发</td>
+</tr>
+<tr>
+<td>ondragover</td>
+<td>在放置区 DOM 内，由放置区 DOM 持续触发</td>
+</tr>
+<tr>
+<td>ondragleave</td>
+<td>离开放置区 DOM ，由放置区 DOM 触发</td>
+</tr>
+<tr>
+<td>ondrop</td>
+<td>在放置区释放对象，由放置区 DOM 触发</td>
+</tr>
+</tbody>
+</table>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>下面是拖拽的一个例子，可以拖拽文字、文件、div 到放置区</p>
+
+<style>
+.target {
+  width: 200px;
+  margin: 0 auto 10px;
+  background: #999;
+  text-align: center;
+}
+.target.active {
+  background: yellow;
+  color: red;
+}
+.dropzone {
+  width: 500px;
+  min-height: 200px;
+  margin: 0 auto 10px;
+  border: 5px dashed blue;
+  background: gray;
+  text-align: center;
+  color: #fff;
+}
+.dropzone.active {
+  border-color: green;
+  background: rgba(0, 0, 0, .3);
+}
+</style>
+
+<div class="target" draggable="true"> this div is draggable </div>
+<div class="dropzone"> Drag something into here </div>
+
+<script>
+var target = document.querySelector('.target')
+var dropzone = document.querySelector('.dropzone')
+var draggableDiv = null
+target.addEventListener('dragstart', function(event) {
+  event.target.classList.add('active')
+  console.log('dragstart')
+})
+target.addEventListener('drag', function(event) {
+  console.log('drag')
+})
+target.addEventListener('dragend', function(event) {
+  event.target.classList.remove('active')
+  draggableDiv = event.target
+  console.log('dragend')
+})
+dropzone.addEventListener('dragenter', function(event) {
+  event.target.classList.add('active')
+  console.log('dragenter')
+})
+dropzone.addEventListener('dragover', function(event) {
+  event.preventDefault()
+  console.log('dragover')
+})
+dropzone.addEventListener('dragleave', function(event) {
+  event.target.classList.remove('active')
+  console.log('dragleave')
+})
+dropzone.addEventListener('drop', function(event) {
+  console.log('drop')
+  if (target.classList.contains('active')) {
+    dropzone.appendChild(target)
+  }
+  var files = event.dataTransfer.files
+  if (files.length) {
+    for (var i = 0; i < files.length; i++) {
+      var p = document.createElement('p')
+      p.innerHTML = files[i].name + ' ' + (files[i].size / 1024).toFixed(2) + 'KB'
+      dropzone.appendChild(p)
+    }
+  } else {
+    var data = event.dataTransfer.getData('text/plain') || event.dataTransfer.getData('text/uri-list')
+    if (/^data:image/.test(data)) {
+      var img = new Image()
+      img.src = data
+      dropzone.appendChild(img)
+    } else {
+      dropzone.innerText = data
+    }
+  }
+  event.target.classList.remove('active')
+  event.preventDefault()
+}, true)
+</script>
+
+
+<p>实现代码如下：</p>
+<figure class="highlight css hljs"><figcaption><span>css</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/* 可被拖拽的 div */</span></span><br><span class="line"><span class="hljs-selector-class">.target</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-number">#999</span>;</span><br><span class="line">  <span class="hljs-attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.target</span><span class="hljs-selector-class">.active</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">background</span>: yellow;</span><br><span class="line">  <span class="hljs-attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/* 拖拽放置的容器 */</span></span><br><span class="line"><span class="hljs-selector-class">.dropzone</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;</span><br><span class="line">  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;</span><br><span class="line">  <span class="hljs-attribute">border</span>: <span class="hljs-number">5px</span> dashed blue;</span><br><span class="line">  <span class="hljs-attribute">background</span>: gray;</span><br><span class="line">  <span class="hljs-attribute">text-align</span>: center;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.dropzone</span><span class="hljs-selector-class">.active</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">border-color</span>: green;</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(0, 0, 0, .3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"target"</span> <span class="hljs-attr">draggable</span>=<span class="hljs-string">"true"</span>&gt;</span> this div is draggable <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dropzone"</span>&gt;</span> Drag something into here <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> target = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.target'</span>) <span class="hljs-comment">// 目标</span></span><br><span class="line"><span class="hljs-keyword">var</span> dropzone = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.dropzone'</span>) <span class="hljs-comment">// 放置区</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 可拖拽的目标事件 */</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 拖拽目标开始时触发一次</span></span><br><span class="line">target.addEventListener(<span class="hljs-string">'dragstart'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.add(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 鼠标未松开拖拽目标，将持续触发该事件</span></span><br><span class="line">target.addEventListener(<span class="hljs-string">'drag'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'drag'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 鼠标松开拖拽目标，触发一次</span></span><br><span class="line">target.addEventListener(<span class="hljs-string">'dragend'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.remove(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 放置区事件 */</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 目标进入放置区，触发一次</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'dragenter'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.add(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 目标处于放置区，将持续触发该事件</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'dragover'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 如果想要捕获 drop 事件 就一定得在该事件中阻止默认事件</span></span><br><span class="line">  event.preventDefault()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 目标离开放置区，触发一次</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'dragleave'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.remove(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 目标在放置区被释放，触发一次</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'drop'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 拖拽的是 target DOM</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (target.classList.contains(<span class="hljs-string">'active'</span>)) &#123;</span><br><span class="line">    dropzone.appendChild(target)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 拖拽的是文件</span></span><br><span class="line">  <span class="hljs-keyword">var</span> files = event.dataTransfer.files</span><br><span class="line">  <span class="hljs-keyword">if</span> (files.length) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; files.length; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">var</span> p = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'p'</span>)</span><br><span class="line">      p.innerHTML = files[i].name + <span class="hljs-string">' '</span> + (files[i].size / <span class="hljs-number">1024</span>).toFixed(<span class="hljs-number">2</span>) + <span class="hljs-string">'KB'</span></span><br><span class="line">      dropzone.appendChild(p)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-comment">// 拖入的是文本</span></span><br><span class="line">    <span class="hljs-keyword">var</span> data = event.dataTransfer.getData(<span class="hljs-string">'text/plain'</span>) || event.dataTransfer.getData(<span class="hljs-string">'text/uri-list'</span>)</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/^data:image/</span>.test(data)) &#123;</span><br><span class="line">      <span class="hljs-keyword">var</span> img = <span class="hljs-keyword">new</span> Image()</span><br><span class="line">      img.src = data</span><br><span class="line">      dropzone.appendChild(img)</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      dropzone.innerText = data</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  event.target.classList.remove(<span class="hljs-string">'active'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 阻止默认动作（如打开一些元素的链接）</span></span><br><span class="line">  event.preventDefault()</span><br><span class="line">&#125;, <span class="hljs-literal">true</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>拖拽事件是支持冒泡的，可以在 document 上监听上述事件。注意：drop 事件在 dragend 之前触发！！在 dragover 中阻止默认事件，才能监听到 drop 事件！！！</p>
+</blockquote>
+<h2 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h2><p>FileReader 对象允许 Web 应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 File 或 Blob 对象指定要读取的文件或数据。</p>
+<p>其中 File 对象可以是来自用户在一个 &lt;input&gt; 元素上选择文件后返回的 FileList 对象,也可以来自拖放操作生成的 DataTransfer 对象,还可以是来自在一个 HTMLCanvasElement 上执行 mozGetAsFile() 方法后返回结果。</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>FileReader 的实例有以下几个只读属性</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>error</td>
+<td>一个 DOMException，表示在读取文件时发生的错误 。</td>
+</tr>
+<tr>
+<td>readyState</td>
+<td>表示 FileReader 状态的数字。(0    还没有加载任何数据; 1 数据正在被加载; 2    已完成全部的读取请求)</td>
+</tr>
+<tr>
+<td>result</td>
+<td>文件的内容。该属性仅在读取操作完成后才有效，数据的格式取决于使用哪个方法来启动读取操作。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>FileReader 的实例有以下几个实例方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abort()</td>
+<td>中止读取操作。在返回时，readyState 属性为 DONE。</td>
+</tr>
+<tr>
+<td>readAsArrayBuffer(blob)</td>
+<td>开始读取指定的 Blob 中的内容, 一旦完成, result 属性中保存的将是被读取文件的 ArrayBuffer 数据对象.</td>
+</tr>
+<tr>
+<td>readerAsBinaryString(blob)</td>
+<td>开始读取指定的 Blob 中的内容。一旦完成，result 属性中将包含所读取文件的原始二进制数据。<code>该特性是非标准!</code></td>
+</tr>
+<tr>
+<td>readAsDataURL(blob)</td>
+<td>开始读取指定的 Blob 中的内容。一旦完成，result 属性中将包含一个 data: URL 格式的字符串以表示所读取文件的内容。</td>
+</tr>
+<tr>
+<td>readAsText(blob[,edncoding])</td>
+<td>开始读取指定的 Blob 中的内容。一旦完成，result 属性中将包含一个字符串以表示所读取的文件内容 edncoding 默认 utf-8</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>一个实例不能连续读取多个文件？？求解🙏</p>
+</blockquote>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>FileReader 的实例有以下几个事件，因为 FileReader 继承自EventTarget，所以所有这些事件也可以通过 addEventListener 方法使用。</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onabort</td>
+<td>处理 abort 事件。该事件在读取操作被中断时触发。</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>处理 error 事件。该事件在读取操作发生错误时触发。</td>
+</tr>
+<tr>
+<td>onload</td>
+<td>处理 load 事件。该事件在读取操作完成时触发。</td>
+</tr>
+<tr>
+<td>onloadstart</td>
+<td>处理 loadstart 事件。该事件在读取操作开始时触发。</td>
+</tr>
+<tr>
+<td>onloadend</td>
+<td>处理 loadend 事件。该事件在读取操作结束时（要么成功，要么失败）触发。</td>
+</tr>
+<tr>
+<td>onprogress</td>
+<td>处理 progress 事件。该事件在读取 Blob 时触发。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>读取上传的图片、文本</p>
+
+<style>
+.read-file-result {
+  min-height: 200px;
+  margin: 10px;
+  border: 4px dotted blue;
+}
+</style>
+👉<input type="file" multiple onchange="fileChange(this)">
+👉<input type="button" value="清空" onclick="empty()">
+<div class="read-file-result"></div>
+<script>
+  function empty() {
+    document.querySelector('.read-file-result').innerHTML = ''
+  }
+  // 遍历选取的文件
+  function fileChange(target) {
+    var ignoreFiles = []
+    for (var i = 0; i < target.files.length; i++) {
+      var file = target.files[i]
+      var isImage = /^image/i.test(file.type)
+      var isText = /^text/i.test(file.type)
+      !isImage && !isText
+        ? ignoreFiles.push(file.name)
+        : readFile(file, isText)
+    }
+    ignoreFiles.length && confirm('已忽略如下文件:\r\n' + ignoreFiles.join('\r\n'))
+    ignoreFiles = []
+  }
+  // 开始读取文件
+  function readFile(file, isText) {
+    var fileReader = new FileReader()
+    fileReader.onload = function() {
+      insertDOM(this.result, isText, document.querySelector('.read-file-result'))
+    }
+    fileReader.onprogress = function(event) {
+      console.log('文件读取进度：' + event.loaded + '/' + event.total)
+    }
+    isText
+      ? fileReader.readAsText(file, 'utf-8')
+      : fileReader.readAsDataURL(file)
+  }
+  // 显示读取结果
+  function insertDOM (result, isText, container) {
+    var dom = null
+    if (isText) {
+      dom = document.createElement('p')
+      dom.innerText = result
+    } else {
+      dom = new Image()
+      dom.src = result
+    }
+    container.appendChild(dom)
+  }
+</script>
+
+<p>实现代码如下：</p>
+<figure class="highlight css hljs"><figcaption><span>css</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.read-file-result</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">border</span>: <span class="hljs-number">4px</span> dotted blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">👉<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">multiple</span> <span class="hljs-attr">onchange</span>=<span class="hljs-string">"fileChange(this)"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"read-file-result"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 遍历选取的文件</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fileChange</span>(<span class="hljs-params">target</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> ignoreFiles = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; target.files.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> file = target.files[i]</span><br><span class="line">    <span class="hljs-keyword">var</span> isImage = <span class="hljs-regexp">/^image/i</span>.test(file.type)</span><br><span class="line">    <span class="hljs-keyword">var</span> isText = <span class="hljs-regexp">/^text/i</span>.test(file.type)</span><br><span class="line">    !isImage &amp;&amp; !isText</span><br><span class="line">      ? ignoreFiles.push(file.name)</span><br><span class="line">      : readFile(file, isText)</span><br><span class="line">  &#125;</span><br><span class="line">  ignoreFiles.length &amp;&amp; confirm(<span class="hljs-string">'已忽略如下文件:\r\n'</span> + ignoreFiles.join(<span class="hljs-string">'\r\n'</span>))</span><br><span class="line">  ignoreFiles = []</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// 开始读取文件</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readFile</span>(<span class="hljs-params">file, isText</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> fileReader = <span class="hljs-keyword">new</span> FileReader() <span class="hljs-comment">// 一个实例不能连续读取多个文件？？</span></span><br><span class="line">  fileReader.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    insertDOM(<span class="hljs-keyword">this</span>.result, isText, <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.read-file-result'</span>))</span><br><span class="line">  &#125;</span><br><span class="line">  fileReader.onprogress = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'文件读取进度：'</span> + event.loaded + <span class="hljs-string">'/'</span> + event.total)</span><br><span class="line">  &#125;</span><br><span class="line">  isText</span><br><span class="line">  ? fileReader.readAsText(file, <span class="hljs-string">'utf-8'</span>)</span><br><span class="line">  : fileReader.readAsDataURL(file)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// 显示读取结果</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertDOM</span> (<span class="hljs-params">result, isText, container</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> dom = <span class="hljs-literal">null</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (isText) &#123;</span><br><span class="line">    dom = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'p'</span>)</span><br><span class="line">    dom.innerText = result</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    dom = <span class="hljs-keyword">new</span> Image()</span><br><span class="line">    dom.src = result</span><br><span class="line">  &#125;</span><br><span class="line">  container.appendChild(dom)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<center> — <em>The End</em> — </center>
+
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/api/">api</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/html/2017/02/22/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">html5 新增的多媒体特性</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/html/2017/02/18/">
+                <span class="level-item">html5 元素新增了一些新的属性</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'js/2017/02/20/',
+		owner: 'ShineKidd',
+		repo: 'blog',
+		oauth: {
+			client_id: '0f25d421879bfe388e0f',
+			client_secret: 'fe74c5e65d1b3e93a1b6432f588533543d92750c',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#新的-DOM-选择器">
+        <span class="has-mr-6">1</span>
+        <span>新的 DOM 选择器</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#getElementBy">
+        <span class="has-mr-6">1.1</span>
+        <span>getElementBy</span>
+        </a></li><li>
+        <a class="is-flex" href="#querySelector">
+        <span class="has-mr-6">1.2</span>
+        <span>querySelector</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#操作类名">
+        <span class="has-mr-6">2</span>
+        <span>操作类名</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#classList">
+        <span class="has-mr-6">2.1</span>
+        <span>classList</span>
+        </a></li><li>
+        <a class="is-flex" href="#add">
+        <span class="has-mr-6">2.2</span>
+        <span>add</span>
+        </a></li><li>
+        <a class="is-flex" href="#remove">
+        <span class="has-mr-6">2.3</span>
+        <span>remove</span>
+        </a></li><li>
+        <a class="is-flex" href="#contains">
+        <span class="has-mr-6">2.4</span>
+        <span>contains</span>
+        </a></li><li>
+        <a class="is-flex" href="#toggle">
+        <span class="has-mr-6">2.5</span>
+        <span>toggle</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#访问历史-API">
+        <span class="has-mr-6">3</span>
+        <span>访问历史 API</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#forward-back-go">
+        <span class="has-mr-6">3.1</span>
+        <span>forward() back() go()</span>
+        </a></li><li>
+        <a class="is-flex" href="#pushState">
+        <span class="has-mr-6">3.2</span>
+        <span>pushState</span>
+        </a></li><li>
+        <a class="is-flex" href="#replaceState">
+        <span class="has-mr-6">3.3</span>
+        <span>replaceState</span>
+        </a></li><li>
+        <a class="is-flex" href="#onpopstate">
+        <span class="has-mr-6">3.4</span>
+        <span>onpopstate</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#全屏-API">
+        <span class="has-mr-6">4</span>
+        <span>全屏 API</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#requestFullscreen">
+        <span class="has-mr-6">4.1</span>
+        <span>requestFullscreen</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#拖放操作">
+        <span class="has-mr-6">5</span>
+        <span>拖放操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#拖拽属性">
+        <span class="has-mr-6">5.1</span>
+        <span>拖拽属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#拖拽事件">
+        <span class="has-mr-6">5.2</span>
+        <span>拖拽事件</span>
+        </a></li><li>
+        <a class="is-flex" href="#示例">
+        <span class="has-mr-6">5.3</span>
+        <span>示例</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#FileReader">
+        <span class="has-mr-6">6</span>
+        <span>FileReader</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#属性">
+        <span class="has-mr-6">6.1</span>
+        <span>属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#方法">
+        <span class="has-mr-6">6.2</span>
+        <span>方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件">
+        <span class="has-mr-6">6.3</span>
+        <span>事件</span>
+        </a></li><li>
+        <a class="is-flex" href="#示例-1">
+        <span class="has-mr-6">6.4</span>
+        <span>示例</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-15T02:57:12.977Z">2019-01-15</time></div>
+                    <a href="/uncategorized/2019/01/15/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-27T00:54:50.579Z">2018-11-27</time></div>
+                    <a href="/uncategorized/2018/11/27/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-27T16:00:00.000Z">2018-04-28</time></div>
+                    <a href="/linux/2018/04/28/" class="has-link-black-ter is-size-6">linux 目录一览</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-20T16:00:00.000Z">2018-04-21</time></div>
+                    <a href="/linux/2018/04/21/" class="has-link-black-ter is-size-6">linux 运行级别</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-16T16:00:00.000Z">2018-04-17</time></div>
+                    <a href="/linux/2018/04/17/" class="has-link-black-ter is-size-6">linux 文件、目录的权限</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/css/">
+            <span class="level-start">
+                <span class="level-item">css</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/git/">
+            <span class="level-start">
+                <span class="level-item">git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hotkey/">
+            <span class="level-start">
+                <span class="level-item">hotkey</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/html/">
+            <span class="level-start">
+                <span class="level-item">html</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/http/">
+            <span class="level-start">
+                <span class="level-item">http</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/js/">
+            <span class="level-start">
+                <span class="level-item">js</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">24</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/npm/">
+            <span class="level-start">
+                <span class="level-item">npm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/proxy/">
+            <span class="level-start">
+                <span class="level-item">proxy</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/security/">
+            <span class="level-start">
+                <span class="level-item">security</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/test/">
+            <span class="level-start">
+                <span class="level-item">test</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/tools/">
+            <span class="level-start">
+                <span class="level-item">tools</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12.5px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 17.5px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 15px;">error</a> <a href="/tags/excel/" style="font-size: 12.5px;">excel</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 17.5px;">http</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 17.5px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 17.5px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12.5px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12.5px;">xlsx</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    LC&amp;MC
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 shinekidd&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

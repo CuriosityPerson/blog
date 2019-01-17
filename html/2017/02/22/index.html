@@ -2,22 +2,23 @@
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Tag: form - LC &amp; MC</title>
+<title>html5 新增的多媒体特性 - LC &amp; MC</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="前端领域技术分享，记录生活">
-<meta name="keywords" content="前端 技术 IT Web Javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LC &amp; MC">
-<meta property="og:url" content="//shinekidd.github.io/tags/form/index.html">
+    <meta name="description" content="HTML 4.01 img 标签实现的图片的展示，对于视频，音频，则使用 object 标签引入 swf 控件才能实现，html5 提供原生标签实现了多媒体功能">
+<meta name="keywords" content="media">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5 新增的多媒体特性">
+<meta property="og:url" content="//shinekidd.github.io/html/2017/02/22/index.html">
 <meta property="og:site_name" content="LC &amp; MC">
-<meta property="og:description" content="前端领域技术分享，记录生活">
+<meta property="og:description" content="HTML 4.01 img 标签实现的图片的展示，对于视频，音频，则使用 object 标签引入 swf 控件才能实现，html5 提供原生标签实现了多媒体功能">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-15T02:39:41.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LC &amp; MC">
-<meta name="twitter:description" content="前端领域技术分享，记录生活">
+<meta name="twitter:title" content="html5 新增的多媒体特性">
+<meta name="twitter:description" content="HTML 4.01 img 标签实现的图片的展示，对于视频，音频，则使用 object 标签引入 swf 控件才能实现，html5 提供原生标签实现了多媒体功能">
 
 
 
@@ -125,6 +126,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -139,23 +144,12 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">form</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-03-05T16:00:00.000Z">2017-03-06</time>
+                <time class="level-item has-text-grey" datetime="2017-02-21T16:00:00.000Z">2017-02-22</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/html/">html</a>
@@ -165,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 691 words)
+                    6 minutes read (About 956 words)
                 </span>
                 
             </div>
@@ -173,32 +167,252 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/html/2017/03/06/">关于 form 标签</a>
+                html5 新增的多媒体特性
             
         </h1>
         <div class="content">
             <blockquote>
-<p>虽然 ajax 提交表单逐渐成为了主流，但 form 具有兼容性好，实现成本低的优点。</p>
+<p>HTML 4.01 img 标签实现的图片的展示，对于视频，音频，则使用 object 标签引入 swf 控件才能实现，html5 提供原生标签实现了多媒体功能</p>
 </blockquote>
+<a id="more"></a>
+<h2 id="audio"><a href="#audio" class="headerlink" title="audio"></a>audio</h2><p>不同浏览器支持格式不一样</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"controls"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"audio/taste_song.mp3"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"audio/mpeg"</span> /&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"audio/taste_song.ogg"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"audio/ogg"</span> /&gt;</span></span><br><span class="line">  <span class="hljs-comment">&lt;!-- 当浏览器不兼容 audio 标签，就会将他以 div 方式解析 --&gt;</span></span><br><span class="line">  您的浏览器不支持 audio 标签。</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="video"><a href="#video" class="headerlink" title="video"></a>video</h2><p>不同浏览器支持格式不一样</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"controls"</span> <span class="hljs-attr">preload</span> <span class="hljs-attr">autoplay</span> <span class="hljs-attr">loop</span> <span class="hljs-attr">muted</span> <span class="hljs-attr">poster</span>=<span class="hljs-string">""</span> <span class="hljs-attr">height</span> <span class="hljs-attr">width</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"fun.ogg"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/ogg"</span> /&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"fun.mp4"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/mp4"</span> /&gt;</span></span><br><span class="line">  <span class="hljs-comment">&lt;!-- 当浏览器不兼容 video 标签，就会将他以 div 方式解析 --&gt;</span></span><br><span class="line">  你的浏览器不支持 video ！</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>audio video 都有如下属性，不同浏览器支持的媒体格式不同，一般使用 source 指定多个源来处理兼容</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoplay</td>
+<td>autoplay</td>
+<td>如果出现该属性，则音频在就绪后马上播放。</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>controls</td>
+<td>如果出现该属性，则向用户显示控件，比如播放按钮。</td>
+</tr>
+<tr>
+<td>loop</td>
+<td>loop</td>
+<td>如果出现该属性，则每当音频结束时重新开始播放。</td>
+</tr>
+<tr>
+<td>preload</td>
+<td>preload</td>
+<td>如果出现该属性，则音频在页面加载时进行加载，并预备播放。如果使用 “autoplay”，则忽略该属性。</td>
+</tr>
+<tr>
+<td>src</td>
+<td>url</td>
+<td>要播放的音频的 URL。</td>
+</tr>
+</tbody>
+</table>
+<p>video 还支持 width height poster (海报) 属性</p>
+<h2 id="track"><a href="#track" class="headerlink" title="track"></a>track</h2><p>为诸如 video 元素之类的媒介规定外部文本轨道。用于规定字幕文件或其他包含文本的文件，当媒介播放时，这些文件是可见的。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"320"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"240"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"controls"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"forrest_gump.mp4"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/mp4"</span> /&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"forrest_gump.ogg"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/ogg"</span> /&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">track</span> <span class="hljs-attr">kind</span>=<span class="hljs-string">"subtitles"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"subs_chi.srt"</span> <span class="hljs-attr">srclang</span>=<span class="hljs-string">"zh"</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Chinese"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">track</span> <span class="hljs-attr">kind</span>=<span class="hljs-string">"subtitles"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"subs_eng.srt"</span> <span class="hljs-attr">srclang</span>=<span class="hljs-string">"en"</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"English"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>目前所有主流浏览器都不支持 <track> 标签，edge safari 高版本支持</p>
+</blockquote>
+<h2 id="媒介事件"><a href="#媒介事件" class="headerlink" title="媒介事件"></a>媒介事件</h2><p>由视频、图像以及音频等媒介触发的事件。适用于所有 HTML 5 元素，不过在媒介元素（诸如 audio、embed、img、object 以及 video）中最常用：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onabort</td>
+<td>script</td>
+<td>当发生中止事件时运行脚本</td>
+</tr>
+<tr>
+<td>oncanplay</td>
+<td>script</td>
+<td>当媒介能够开始播放但可能因缓冲而需要停止时运行脚本</td>
+</tr>
+<tr>
+<td>oncanplaythrough</td>
+<td>script</td>
+<td>当媒介能够无需因缓冲而停止即可播放至结尾时运行脚本</td>
+</tr>
+<tr>
+<td>ondurationchange</td>
+<td>script</td>
+<td>当媒介长度改变时运行脚本</td>
+</tr>
+<tr>
+<td>onemptied</td>
+<td>script</td>
+<td>当媒介资源元素突然为空时（网络错误、加载错误等）运行脚本</td>
+</tr>
+<tr>
+<td>onended</td>
+<td>script</td>
+<td>当媒介已抵达结尾时运行脚本</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>script</td>
+<td>当在元素加载期间发生错误时运行脚本</td>
+</tr>
+<tr>
+<td>onloadeddata</td>
+<td>script</td>
+<td>当加载媒介数据时运行脚本</td>
+</tr>
+<tr>
+<td>onloadedmetadata</td>
+<td>script</td>
+<td>当媒介元素的持续时间以及其他媒介数据已加载时运行脚本</td>
+</tr>
+<tr>
+<td>onloadstart</td>
+<td>script</td>
+<td>当浏览器开始加载媒介数据时运行脚本</td>
+</tr>
+<tr>
+<td>onpause</td>
+<td>script</td>
+<td>当媒介数据暂停时运行脚本</td>
+</tr>
+<tr>
+<td>onplay</td>
+<td>script</td>
+<td>当媒介数据将要开始播放时运行脚本</td>
+</tr>
+<tr>
+<td>onplaying</td>
+<td>script</td>
+<td>当媒介数据已开始播放时运行脚本</td>
+</tr>
+<tr>
+<td>onprogress</td>
+<td>script</td>
+<td>当浏览器正在取媒介数据时运行脚本</td>
+</tr>
+<tr>
+<td>onratechange</td>
+<td>script</td>
+<td>当媒介数据的播放速率改变时运行脚本</td>
+</tr>
+<tr>
+<td>onreadystatechange</td>
+<td>script</td>
+<td>当就绪状态（ready-state）改变时运行脚本</td>
+</tr>
+<tr>
+<td>onseeked</td>
+<td>script</td>
+<td>当媒介元素的定位属性 [1] 不再为真且定位已结束时运行脚本</td>
+</tr>
+<tr>
+<td>onseeking</td>
+<td>script</td>
+<td>当媒介元素的定位属性为真且定位已开始时运行脚本</td>
+</tr>
+<tr>
+<td>onstalled</td>
+<td>script</td>
+<td>当取回媒介数据过程中（延迟）存在错误时运行脚本</td>
+</tr>
+<tr>
+<td>onsuspend</td>
+<td>script</td>
+<td>当浏览器已在取媒介数据但在取回整个媒介文件之前停止时运行脚本</td>
+</tr>
+<tr>
+<td>ontimeupdate</td>
+<td>script</td>
+<td>当媒介改变其播放位置时运行脚本</td>
+</tr>
+<tr>
+<td>onvolumechange</td>
+<td>script</td>
+<td>当媒介改变音量亦或当音量被设置为静音时运行脚本</td>
+</tr>
+<tr>
+<td>onwaiting</td>
+<td>script</td>
+<td>当媒介已停止播放但打算继续播放时运行脚本</td>
+</tr>
+</tbody>
+</table>
+<center> — <em>The End</em> — </center>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/html/2017/03/06/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/media/">media</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/html/2017/02/24/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">html5 新增的浏览器特性</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/js/2017/02/20/">
+                <span class="level-item">html5 新增的 API</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'html/2017/02/22/',
+		owner: 'ShineKidd',
+		repo: 'blog',
+		oauth: {
+			client_id: '0f25d421879bfe388e0f',
+			client_secret: 'fe74c5e65d1b3e93a1b6432f588533543d92750c',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
                 
@@ -208,6 +422,33 @@
 <div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#audio">
+        <span class="has-mr-6">1</span>
+        <span>audio</span>
+        </a></li><li>
+        <a class="is-flex" href="#video">
+        <span class="has-mr-6">2</span>
+        <span>video</span>
+        </a></li><li>
+        <a class="is-flex" href="#track">
+        <span class="has-mr-6">3</span>
+        <span>track</span>
+        </a></li><li>
+        <a class="is-flex" href="#媒介事件">
+        <span class="has-mr-6">4</span>
+        <span>媒介事件</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 <div class="card widget">
@@ -215,6 +456,19 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-15T02:57:12.977Z">2019-01-15</time></div>
+                    <a href="/uncategorized/2019/01/15/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -268,19 +522,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-15T16:00:00.000Z">2018-04-16</time></div>
-                    <a href="/linux/2018/04/16/" class="has-link-black-ter is-size-6">linux 下的 /etc/shadow 文件</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -299,7 +540,7 @@
                 <span class="level-item">css</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/git/">
@@ -307,7 +548,7 @@
                 <span class="level-item">git</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/hotkey/">
@@ -323,7 +564,7 @@
                 <span class="level-item">html</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/http/">
@@ -339,7 +580,7 @@
                 <span class="level-item">js</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">24</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/">
@@ -402,6 +643,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/11/">
@@ -486,7 +738,7 @@
                     <span class="level-item">October 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -574,7 +826,7 @@
                     <span class="level-item">February 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -590,7 +842,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 13.33px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/a/" style="font-size: 10px;">a</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 16.67px;">error</a> <a href="/tags/excel/" style="font-size: 13.33px;">excel</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/module/" style="font-size: 20px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 13.33px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 20px;">syntax</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 13.33px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 13.33px;">xlsx</a>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12.5px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 17.5px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 15px;">error</a> <a href="/tags/excel/" style="font-size: 12.5px;">excel</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 17.5px;">http</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 17.5px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 17.5px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12.5px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12.5px;">xlsx</a>
     </div>
 </div>
 

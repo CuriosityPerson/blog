@@ -145,6 +145,138 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-11-03T16:00:00.000Z">2017-11-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/css/">css</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 536 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/css/2017/11/04/">css 旋转 3D 立方体</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>小技巧：使用 CSS3 一个酷炫的旋转立方体</p>
+</blockquote>
+
+<style>
+  /* 让立方体居中显示的容器，仅为了展示友好 */
+.example-cubic-container {
+  margin: 20px auto;
+  text-align: center;
+  font-size: 10px;
+}
+/* 设置立方体的面积，preserve-3d 开启 3d 视觉 */
+.example-cubic {
+  display: inline-block;
+  position: relative;
+  height: 10em;
+  width: 10em;
+  user-select: none;
+  transition: transform 2s linear;
+  transform-style: preserve-3d;
+  animation: spinningH 6s infinite linear;
+}
+/* 暂替动画 */
+.example-cubic:hover {
+  animation-play-state: paused;
+}
+/* 设置绝对定位，使六个面先重叠在一起 */
+.example-cubic > div {
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  opacity: 0.8;
+  text-align: center;
+}
+/* 定义六个面对旋转角度和位移，交换 rotate 和 translate 属性会得到不同的结果 */
+.example-cubic > div:nth-child(1) {
+  transform: translate3d(0, 0, 5em);
+  background-color: pink;
+  color: white;
+}
+.example-cubic > div:nth-child(2) { 
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(0, 0, 5em);
+  background-color: orange;
+  color: lawngreen;
+}
+.example-cubic > div:nth-child(3) { 
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 5em);
+  background-color: white;
+  color: pink;
+}
+.example-cubic > div:nth-child(4) { 
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(0, 0, 5em);
+  background-color: lawngreen;
+  color: orange;
+}
+.example-cubic > div:nth-child(5) { 
+  transform: rotateX(-90deg) rotateZ(180deg) translate3d(0, 0, 5em);
+  background-color: mediumpurple;
+  color: lightskyblue;
+}
+.example-cubic > div:nth-child(6) { 
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, 0, 5em);
+  background-color: lightskyblue;
+  color: mediumpurple;
+}
+/* 旋转动画 */
+@keyframes spinningH {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(720deg) rotateY(360deg);
+  }
+}
+</style>
+<div class="example-cubic-container">
+  <div class="example-cubic">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/css/2017/11/04/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2017-10-27T16:00:00.000Z">2017-10-28</time>
                 
                 <div class="level-item">
@@ -299,6 +431,57 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-10-15T16:00:00.000Z">2017-10-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/git/">git</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 771 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/git/2017/10/16/">git commit message 的格式规范</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>格式化的 Commit message，不但方便快速浏览，查找历史提交信息，还可以直接从 commit 生成 Change log。</p>
+</blockquote>
+<p>本文内容摘自 <a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="noopener">Commit message 和 Change log 编写指南</a> </p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/git/2017/10/16/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2017-10-13T16:00:00.000Z">2017-10-14</time>
                 
                 <div class="level-item">
@@ -394,106 +577,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-09-29T16:00:00.000Z">2017-09-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/hotkey/">hotkey</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 minutes read (About 1096 words)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/hotkey/2017/09/30/">vscode 编辑器的快捷键</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>微软的 Visual Studio Code 已成为最流行的编辑器（应该没有之一），掌握它的一些常用的快捷可以让你的工作效率提高 20% 左右</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/hotkey/2017/09/30/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-09-22T16:00:00.000Z">2017-09-23</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/js/">js</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 minutes read (About 232 words)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/js/2017/09/23/">这些 js 的写法很有意思</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>网上涉略各种论坛，博客，发现一些很有意思的 js 写法，在此做个收集，但不整理。可以给自己灵感，也希望对你有用</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/js/2017/09/23/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -518,7 +601,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/11/">11</a></li>
             
         </ul>
     </nav>
@@ -539,6 +622,19 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-15T02:57:12.977Z">2019-01-15</time></div>
+                    <a href="/uncategorized/2019/01/15/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -592,19 +688,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-15T16:00:00.000Z">2018-04-16</time></div>
-                    <a href="/linux/2018/04/16/" class="has-link-black-ter is-size-6">linux 下的 /etc/shadow 文件</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -623,7 +706,7 @@
                 <span class="level-item">css</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/git/">
@@ -631,7 +714,7 @@
                 <span class="level-item">git</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/hotkey/">
@@ -647,7 +730,7 @@
                 <span class="level-item">html</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/http/">
@@ -663,7 +746,7 @@
                 <span class="level-item">js</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">24</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/">
@@ -726,6 +809,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/11/">
@@ -810,7 +904,7 @@
                     <span class="level-item">October 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -898,7 +992,7 @@
                     <span class="level-item">February 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -914,7 +1008,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 13.33px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/a/" style="font-size: 10px;">a</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 16.67px;">error</a> <a href="/tags/excel/" style="font-size: 13.33px;">excel</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/module/" style="font-size: 20px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 13.33px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 20px;">syntax</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 13.33px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 13.33px;">xlsx</a>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12.5px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 17.5px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 15px;">error</a> <a href="/tags/excel/" style="font-size: 12.5px;">excel</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 17.5px;">http</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 17.5px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 17.5px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12.5px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12.5px;">xlsx</a>
     </div>
 </div>
 
