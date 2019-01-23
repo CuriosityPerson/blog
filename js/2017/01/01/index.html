@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>jQuery —— Write Less，Do More - LC &amp; MC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="2006年1月 John Resig 等人创建了 jQuery。 015年，jQuery 被用于前100万个网站中的63％（根据BuiltWith），以及所有互联网网站的17％。[15]截至 2018年6月，jQuery被用于前 100 万个网站中的 73％，并且占所有网站的 22.4％（根据BuiltWith）。jQuery 风靡一时。">
+<meta name="keywords" content="jquery,library">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery —— Write Less，Do More">
+<meta property="og:url" content="//shinekidd.github.io/js/2017/01/01/index.html">
+<meta property="og:site_name" content="LC &amp; MC">
+<meta property="og:description" content="2006年1月 John Resig 等人创建了 jQuery。 015年，jQuery 被用于前100万个网站中的63％（根据BuiltWith），以及所有互联网网站的17％。[15]截至 2018年6月，jQuery被用于前 100 万个网站中的 73％，并且占所有网站的 22.4％（根据BuiltWith）。jQuery 风靡一时。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-21T06:22:05.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery —— Write Less，Do More">
+<meta name="twitter:description" content="2006年1月 John Resig 等人创建了 jQuery。 015年，jQuery 被用于前100万个网站中的63％（根据BuiltWith），以及所有互联网网站的17％。[15]截至 2018年6月，jQuery被用于前 100 万个网站中的 73％，并且占所有网站的 22.4％（根据BuiltWith）。jQuery 风靡一时。">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai-sublime.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                LC&amp;MC
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2016-12-31T16:00:00.000Z">2017-01-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/js/">js</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1354 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                jQuery —— Write Less，Do More
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>2006年1月 John Resig 等人创建了 jQuery。 015年，jQuery 被用于前100万个网站中的63％（根据BuiltWith），以及所有互联网网站的17％。[15]截至 2018年6月，jQuery被用于前 100 万个网站中的 73％，并且占所有网站的 22.4％（根据BuiltWith）。jQuery 风靡一时。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>书写简洁、代码优雅，链式操作，.end() 回溯</li>
+<li>强大的选择器，支持 CSS1-3 所有的选择器</li>
+<li>浏览器兼容性好，兼容 IE6、7、8</li>
+<li>统一的入口，降低了学习、记忆成本</li>
+<li>强大的动画效果、事件支持</li>
+<li>开源、免费</li>
+<li>插件丰富，可扩展性强</li>
+</ul>
+<h2 id="入口函数"><a href="#入口函数" class="headerlink" title="入口函数"></a>入口函数</h2><figure class="highlight js hljs"><figcaption><span>入口函数一</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line"><span class="hljs-comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><figcaption><span>入口函数二</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="的几种常用用法"><a href="#的几种常用用法" class="headerlink" title="$()的几种常用用法"></a>$()的几种常用用法</h2><ul>
+<li>$(‘#id’) 选择某个元素，返回值为 jQuery 对象</li>
+<li>$(DOM) 将 DOM 对象转换成 jQuery 对象</li>
+<li>$(‘&lt;div&gt;&lt;/div&gt;’) 创建元素，返回值为 jQuery 对象</li>
+<li>$(function(){ }) 入口函数的简写方式</li>
+</ul>
+<blockquote>
+<p>$(‘div’).html() 获取内容的时候，只返回匹配到的第一个元素的数据</p>
+</blockquote>
+<p>data() 跟 .attr() 方法的区别:</p>
+<ul>
+<li>获取数据的时候，attr() 方法需要传入参数，data() 方法可以不传入参数，这时候获取到的是一个 js 对象，即使没有任何 data 属性。</li>
+<li>获取到的数据类型不同，attr 方法获取到的数据类型是字符串 (String)，data 方法获取到的是相应的类型。</li>
+<li>data 方法获取到数据之后，我们使用一个对象来接收它，那么就可以直接操作(设置值或获取值)这个对象，而 attr 方法不可以。 并且通过这种方式，要比 .data(key, value) 的方式更高效！</li>
+<li>data-attribute 属性会在页面初始化的时候放到 jQuery 对象，被缓存起来，而 attr 方法不会。</li>
+</ul>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本选择器</td>
+<td><code>#id</code>, <code>.class</code>, <code>element</code>, <code>*</code></td>
+</tr>
+<tr>
+<td>层级选择器</td>
+<td><code>空格</code>, <code>&gt;</code>, <code>+</code>, <code>~</code>, <code>,</code></td>
+</tr>
+<tr>
+<td>基本过滤选择器</td>
+<td><code>:first</code>, <code>:last</code>, <code>:eq(index)</code>, <code>:lt(index)</code>, <code>:gt(index)</code>, <code>:odd</code>, <code>:even</code></td>
+</tr>
+<tr>
+<td>筛选选择器</td>
+<td><code>.eq(index)</code>, <code>.children()</code>, <code>.parent()</code>, <code>.siblings()</code>, <code>.find()</code></td>
+</tr>
+<tr>
+<td>属性选择器</td>
+<td><code>E[href]</code>,  <code>E[href=&#39;qq&#39;]</code>,  <code>E[href!=&#39;baidu&#39;]</code>,  <code>E[href^=&#39;web&#39;]</code>,  <code>E[href$=&#39;cn&#39;]</code>,  <code>E[href*=&#39;i&#39;]</code>,  <code>E[href][title=&#39;world&#39;]</code></td>
+</tr>
+<tr>
+<td>过滤方法</td>
+<td><code>.first()</code>, <code>.last()</code>, <code>.eq(index)</code>, <code>.not(&#39;.active&#39;)</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><h3 id="show"><a href="#show" class="headerlink" title="show()"></a>show()</h3><h3 id="hide"><a href="#hide" class="headerlink" title="hide()"></a>hide()</h3><h3 id="fadeIn"><a href="#fadeIn" class="headerlink" title="fadeIn()"></a>fadeIn()</h3><h3 id="fadeOut"><a href="#fadeOut" class="headerlink" title="fadeOut()"></a>fadeOut()</h3><h3 id="fadeTo"><a href="#fadeTo" class="headerlink" title="fadeTo()"></a>fadeTo()</h3><h3 id="slideDown"><a href="#slideDown" class="headerlink" title="slideDown()"></a>slideDown()</h3><h3 id="slideUp"><a href="#slideUp" class="headerlink" title="slideUp()"></a>slideUp()</h3><h3 id="slideToggle"><a href="#slideToggle" class="headerlink" title="slideToggle ()"></a>slideToggle ()</h3><h3 id="animate"><a href="#animate" class="headerlink" title="animate()"></a>animate()</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'div'</span>).animate(&#123; <span class="hljs-attr">height</span>: <span class="hljs-string">'300px'</span>, <span class="hljs-attr">opacity</span>: <span class="hljs-string">'0.4'</span> &#125;,<span class="hljs-string">'slow'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h2><h3 id="css"><a href="#css" class="headerlink" title="css()"></a>css()</h3><h3 id="addClass"><a href="#addClass" class="headerlink" title="addClass()"></a>addClass()</h3><h3 id="removeClass"><a href="#removeClass" class="headerlink" title="removeClass()"></a>removeClass()</h3><h3 id="toggleClass"><a href="#toggleClass" class="headerlink" title="toggleClass()"></a>toggleClass()</h3><h3 id="attr"><a href="#attr" class="headerlink" title="attr()"></a>attr()</h3><h3 id="removeAttr"><a href="#removeAttr" class="headerlink" title="removeAttr()"></a>removeAttr()</h3><h3 id="val"><a href="#val" class="headerlink" title="val()"></a>val()</h3><h3 id="html"><a href="#html" class="headerlink" title="html()"></a>html()</h3><h3 id="text"><a href="#text" class="headerlink" title="text()"></a>text()</h3><h3 id="append"><a href="#append" class="headerlink" title="append()"></a>append()</h3><h3 id="prePend"><a href="#prePend" class="headerlink" title="prePend()"></a>prePend()</h3><h2 id="DOM-对象跟-jQuery-对象相互转换"><a href="#DOM-对象跟-jQuery-对象相互转换" class="headerlink" title="DOM 对象跟 jQuery 对象相互转换"></a>DOM 对象跟 jQuery 对象相互转换</h2><p>jQuery 对象转 DOM</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'btn'</span>).get(<span class="hljs-number">0</span>)</span><br><span class="line">$(<span class="hljs-string">'btn'</span>)[<span class="hljs-number">0</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h2><h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'btn'</span>).bind(<span class="hljs-string">'“click”'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">&#125; )</span><br></pre></td></tr></table></figure>
+<h3 id="one"><a href="#one" class="headerlink" title="one"></a>one</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'btn'</span>).one(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="delegate"><a href="#delegate" class="headerlink" title="delegate"></a>delegate</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'btn'</span>).delegate(<span class="hljs-string">'p'</span>, <span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="on"><a href="#on" class="headerlink" title="on"></a>on</h3><p>最现代的方式，兼容zepto，1.7以后的 jQuery 版本被 on 取代</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'ul'</span>).on(<span class="hljs-string">'click'</span>, <span class="hljs-string">'li'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h2><h3 id="unbind"><a href="#unbind" class="headerlink" title="unbind"></a>unbind</h3><h3 id="undelegate"><a href="#undelegate" class="headerlink" title="undelegate"></a>undelegate</h3><h3 id="off"><a href="#off" class="headerlink" title="off"></a>off</h3><h2 id="触发事件"><a href="#触发事件" class="headerlink" title="触发事件"></a>触发事件</h2><h3 id="click"><a href="#click" class="headerlink" title="click"></a>click</h3><h3 id="trigger"><a href="#trigger" class="headerlink" title="trigger"></a>trigger</h3><p>触发事件，并且触发浏览器默认行为</p>
+<h3 id="triggerHandler"><a href="#triggerHandler" class="headerlink" title="triggerHandler"></a>triggerHandler</h3><p>不触发浏览器默认行为</p>
+<h2 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h2><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  url: <span class="hljs-string">'xxx/ss/df'</span>,</span><br><span class="line">  type: <span class="hljs-string">'POST'</span>,</span><br><span class="line">  dataType: <span class="hljs-string">'json'</span>,</span><br><span class="line">  data: &#123; <span class="hljs-attr">username</span>: <span class="hljs-string">'shinekidd'</span>, <span class="hljs-attr">id</span>: <span class="hljs-number">78</span> &#125;,</span><br><span class="line">  success: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123; &#125;,</span><br><span class="line">  error: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123; &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>全局设置</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$.ajaxSetup(&#123;</span><br><span class="line">  global: <span class="hljs-literal">true</span>,</span><br><span class="line">  cache: <span class="hljs-literal">false</span>,</span><br><span class="line">  timeout: <span class="hljs-number">2000</span>,</span><br><span class="line">  dataType: <span class="hljs-string">'json'</span>,</span><br><span class="line">  error: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">xhr, status, err</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'ajax status: '</span>, status);</span><br><span class="line">      <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'ajax error: '</span>, err)</span><br><span class="line">      <span class="hljs-keyword">var</span> msg = <span class="hljs-string">''</span>;</span><br><span class="line">      <span class="hljs-keyword">switch</span> (xhr.status) &#123;</span><br><span class="line">          <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:</span><br><span class="line">           <span class="hljs-comment">// ...</span></span><br><span class="line">      &#125;</span><br><span class="line">      msg &amp;&amp; CreatePop.error(msg);</span><br><span class="line">  &#125;,</span><br><span class="line">  success: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result, status, xhr</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// console.log('ajax status: ', status);</span></span><br><span class="line">    result.error * <span class="hljs-number">1</span> &amp;&amp; result.msg &amp;&amp; CreatePop.warning(result.msg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h2><h3 id="data-与-attr"><a href="#data-与-attr" class="headerlink" title="data() 与 attr()"></a>data() 与 attr()</h3><p>获取数据的时候，attr 方法需要传入参数，data 方法可以不传入参数，这时候获取到的是一个 js 对象，即使没有任何 data 属性。<br>获取到的数据类型不同，attr 方法获取到的数据类型是字符串 (String)，data 方法获取到的是相应的类型。<br>data 方法获取到数据之后，我们使用一个对象来接收它，那么就可以直接操作(设置值或获取值)这个对象，而 attr 方法不可以。 并且通过这种方式，要比.data(key,value) 的方式更高效！</p>
+<p>data-attribute 属性会在页面初始化的时候放到 jQuery 对象，被缓存起来，而 attr 方法不会。<br>html 里面的 data 属性，例如：data-ROLE，jQuery 获取的时候用：$(‘div’).data(‘role’);<br>当使用 jQuery 设置 data 属性的时候，例如：$(‘div’).data(‘UPCASE’,123); ，那么获取的时候，要使用：$(‘div’).data(‘UPCASE’);<br>&lt;div data-role=”page” data-last-value=”43” data-hidden=”true” data-options=’{“name”:”John”}’&gt;注意HTML属性不区分大小写&lt;/div&gt;<br>$( ‘div’ ).data( ‘lastValue’ ) === 43;<br>lastValue -&gt; data-last-value</p>
+<h3 id="mouseover-与-mouseenter"><a href="#mouseover-与-mouseenter" class="headerlink" title="mouseover 与 mouseenter"></a>mouseover 与 mouseenter</h3><p>mouseover/mouseout 事件，鼠标经过的时候会触发多次，每遇到一个子元素就会触发一次。<br>mouseenter/mouseleave 事件，鼠标经过的时候只会触发一次</p>
+<h3 id="隐式迭代"><a href="#隐式迭代" class="headerlink" title="隐式迭代"></a>隐式迭代</h3><p>默认情况下，会自动迭代执行jQuery选择出来所有dom元素的操作<br>如果获取的是多元素的值，默认返回的是第一个元素的值。</p>
+<h3 id="each、-map、-trim"><a href="#each、-map、-trim" class="headerlink" title="$.each、$.map、$.trim"></a>$.each、$.map、$.trim</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 参数顺序是一致的</span></span><br><span class="line">$node.each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index,element</span>)</span>&#123; &#125;)</span><br><span class="line"></span><br><span class="line">$.each([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">i,v</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(i + <span class="hljs-string">' : '</span> + v)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// map返回数组</span></span><br><span class="line">$(“li”).map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index, element</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> $(<span class="hljs-keyword">this</span>).text()</span><br><span class="line">&#125;);</span><br><span class="line"><span class="hljs-comment">// 与上面的参数是相反的</span></span><br><span class="line">$.map(array, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">object, index</span>) </span>&#123; </span><br><span class="line">  <span class="hljs-keyword">return</span> object * index </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="解决-冲突"><a href="#解决-冲突" class="headerlink" title="解决 $ 冲突"></a>解决 $ 冲突</h3><p>执行如下代码，释放 $</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.noConflict()</span><br></pre></td></tr></table></figure>
+<p>可以使用其他库的 $ 符号了</p>
+<h3 id="对象扩展方法"><a href="#对象扩展方法" class="headerlink" title="$ 对象扩展方法"></a>$ 对象扩展方法</h3><p>例如扩展 lxCfbg 方法到 $ 上</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) </span>&#123;</span><br><span class="line">  $.fn.lxCfbg = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">options</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 合并参数</span></span><br><span class="line">    <span class="hljs-keyword">var</span> opts = $.extend(&#123;</span><br><span class="line">      <span class="hljs-string">"color"</span>: <span class="hljs-string">"#000"</span>,</span><br><span class="line">      <span class="hljs-string">"font-size"</span>: <span class="hljs-string">"16px"</span>,</span><br><span class="line">      <span class="hljs-string">"background-color"</span>: <span class="hljs-string">"#fff"</span></span><br><span class="line">    &#125;, options)</span><br><span class="line">    <span class="hljs-comment">// </span></span><br><span class="line">    $<span class="hljs-keyword">this</span>.css(&#123;</span><br><span class="line">      <span class="hljs-string">"color"</span>: opts.color,</span><br><span class="line">      <span class="hljs-string">"font-size"</span>: opts[<span class="hljs-string">"font-size"</span>],</span><br><span class="line">      <span class="hljs-string">"background-color"</span>: opts[<span class="hljs-string">"background-color"</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="hljs-keyword">return</span> $<span class="hljs-keyword">this</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(jQuery)</span><br></pre></td></tr></table></figure>
+<center> — <em>The End</em> — </center>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/jquery/">jquery</a>, <a class="has-link-grey -link" href="/tags/library/">library</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/html/2017/02/13/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">HTML 中常用的字符实体及编号对照表</span>
+            </a>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'js/2017/01/01/',
+		owner: 'ShineKidd',
+		repo: 'blog',
+		oauth: {
+			client_id: '0f25d421879bfe388e0f',
+			client_secret: 'fe74c5e65d1b3e93a1b6432f588533543d92750c',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#特点">
+        <span class="has-mr-6">1</span>
+        <span>特点</span>
+        </a></li><li>
+        <a class="is-flex" href="#入口函数">
+        <span class="has-mr-6">2</span>
+        <span>入口函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#的几种常用用法">
+        <span class="has-mr-6">3</span>
+        <span>$()的几种常用用法</span>
+        </a></li><li>
+        <a class="is-flex" href="#选择器">
+        <span class="has-mr-6">4</span>
+        <span>选择器</span>
+        </a></li><li>
+        <a class="is-flex" href="#动画">
+        <span class="has-mr-6">5</span>
+        <span>动画</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#show">
+        <span class="has-mr-6">5.1</span>
+        <span>show()</span>
+        </a></li><li>
+        <a class="is-flex" href="#hide">
+        <span class="has-mr-6">5.2</span>
+        <span>hide()</span>
+        </a></li><li>
+        <a class="is-flex" href="#fadeIn">
+        <span class="has-mr-6">5.3</span>
+        <span>fadeIn()</span>
+        </a></li><li>
+        <a class="is-flex" href="#fadeOut">
+        <span class="has-mr-6">5.4</span>
+        <span>fadeOut()</span>
+        </a></li><li>
+        <a class="is-flex" href="#fadeTo">
+        <span class="has-mr-6">5.5</span>
+        <span>fadeTo()</span>
+        </a></li><li>
+        <a class="is-flex" href="#slideDown">
+        <span class="has-mr-6">5.6</span>
+        <span>slideDown()</span>
+        </a></li><li>
+        <a class="is-flex" href="#slideUp">
+        <span class="has-mr-6">5.7</span>
+        <span>slideUp()</span>
+        </a></li><li>
+        <a class="is-flex" href="#slideToggle">
+        <span class="has-mr-6">5.8</span>
+        <span>slideToggle ()</span>
+        </a></li><li>
+        <a class="is-flex" href="#animate">
+        <span class="has-mr-6">5.9</span>
+        <span>animate()</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#DOM-操作">
+        <span class="has-mr-6">6</span>
+        <span>DOM 操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#css">
+        <span class="has-mr-6">6.1</span>
+        <span>css()</span>
+        </a></li><li>
+        <a class="is-flex" href="#addClass">
+        <span class="has-mr-6">6.2</span>
+        <span>addClass()</span>
+        </a></li><li>
+        <a class="is-flex" href="#removeClass">
+        <span class="has-mr-6">6.3</span>
+        <span>removeClass()</span>
+        </a></li><li>
+        <a class="is-flex" href="#toggleClass">
+        <span class="has-mr-6">6.4</span>
+        <span>toggleClass()</span>
+        </a></li><li>
+        <a class="is-flex" href="#attr">
+        <span class="has-mr-6">6.5</span>
+        <span>attr()</span>
+        </a></li><li>
+        <a class="is-flex" href="#removeAttr">
+        <span class="has-mr-6">6.6</span>
+        <span>removeAttr()</span>
+        </a></li><li>
+        <a class="is-flex" href="#val">
+        <span class="has-mr-6">6.7</span>
+        <span>val()</span>
+        </a></li><li>
+        <a class="is-flex" href="#html">
+        <span class="has-mr-6">6.8</span>
+        <span>html()</span>
+        </a></li><li>
+        <a class="is-flex" href="#text">
+        <span class="has-mr-6">6.9</span>
+        <span>text()</span>
+        </a></li><li>
+        <a class="is-flex" href="#append">
+        <span class="has-mr-6">6.10</span>
+        <span>append()</span>
+        </a></li><li>
+        <a class="is-flex" href="#prePend">
+        <span class="has-mr-6">6.11</span>
+        <span>prePend()</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#DOM-对象跟-jQuery-对象相互转换">
+        <span class="has-mr-6">7</span>
+        <span>DOM 对象跟 jQuery 对象相互转换</span>
+        </a></li><li>
+        <a class="is-flex" href="#绑定事件">
+        <span class="has-mr-6">8</span>
+        <span>绑定事件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#bind">
+        <span class="has-mr-6">8.1</span>
+        <span>bind</span>
+        </a></li><li>
+        <a class="is-flex" href="#one">
+        <span class="has-mr-6">8.2</span>
+        <span>one</span>
+        </a></li><li>
+        <a class="is-flex" href="#delegate">
+        <span class="has-mr-6">8.3</span>
+        <span>delegate</span>
+        </a></li><li>
+        <a class="is-flex" href="#on">
+        <span class="has-mr-6">8.4</span>
+        <span>on</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#解绑事件">
+        <span class="has-mr-6">9</span>
+        <span>解绑事件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#unbind">
+        <span class="has-mr-6">9.1</span>
+        <span>unbind</span>
+        </a></li><li>
+        <a class="is-flex" href="#undelegate">
+        <span class="has-mr-6">9.2</span>
+        <span>undelegate</span>
+        </a></li><li>
+        <a class="is-flex" href="#off">
+        <span class="has-mr-6">9.3</span>
+        <span>off</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#触发事件">
+        <span class="has-mr-6">10</span>
+        <span>触发事件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#click">
+        <span class="has-mr-6">10.1</span>
+        <span>click</span>
+        </a></li><li>
+        <a class="is-flex" href="#trigger">
+        <span class="has-mr-6">10.2</span>
+        <span>trigger</span>
+        </a></li><li>
+        <a class="is-flex" href="#triggerHandler">
+        <span class="has-mr-6">10.3</span>
+        <span>triggerHandler</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#ajax">
+        <span class="has-mr-6">11</span>
+        <span>ajax</span>
+        </a></li><li>
+        <a class="is-flex" href="#特点-1">
+        <span class="has-mr-6">12</span>
+        <span>特点</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#data-与-attr">
+        <span class="has-mr-6">12.1</span>
+        <span>data() 与 attr()</span>
+        </a></li><li>
+        <a class="is-flex" href="#mouseover-与-mouseenter">
+        <span class="has-mr-6">12.2</span>
+        <span>mouseover 与 mouseenter</span>
+        </a></li><li>
+        <a class="is-flex" href="#隐式迭代">
+        <span class="has-mr-6">12.3</span>
+        <span>隐式迭代</span>
+        </a></li><li>
+        <a class="is-flex" href="#each、-map、-trim">
+        <span class="has-mr-6">12.4</span>
+        <span>$.each、$.map、$.trim</span>
+        </a></li><li>
+        <a class="is-flex" href="#解决-冲突">
+        <span class="has-mr-6">12.5</span>
+        <span>解决 $ 冲突</span>
+        </a></li><li>
+        <a class="is-flex" href="#对象扩展方法">
+        <span class="has-mr-6">12.6</span>
+        <span>$ 对象扩展方法</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-07T16:00:00.000Z">2018-09-08</time></div>
+                    <a href="/js/2018/09/08/" class="has-link-black-ter is-size-6">在 Vue 中使用 i18n 做国际化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/js/">js</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-27T16:00:00.000Z">2018-04-28</time></div>
+                    <a href="/linux/2018/04/28/" class="has-link-black-ter is-size-6">linux 目录一览</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-20T16:00:00.000Z">2018-04-21</time></div>
+                    <a href="/linux/2018/04/21/" class="has-link-black-ter is-size-6">linux 运行级别</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-16T16:00:00.000Z">2018-04-17</time></div>
+                    <a href="/linux/2018/04/17/" class="has-link-black-ter is-size-6">linux 文件、目录的权限</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-15T16:00:00.000Z">2018-04-16</time></div>
+                    <a href="/linux/2018/04/16/" class="has-link-black-ter is-size-6">linux 下的 /etc/shadow 文件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/css/">
+            <span class="level-start">
+                <span class="level-item">css</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/git/">
+            <span class="level-start">
+                <span class="level-item">git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hotkey/">
+            <span class="level-start">
+                <span class="level-item">hotkey</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/html/">
+            <span class="level-start">
+                <span class="level-item">html</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/js/">
+            <span class="level-start">
+                <span class="level-item">js</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">27</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/office/">
+            <span class="level-start">
+                <span class="level-item">office</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/proxy/">
+            <span class="level-start">
+                <span class="level-item">proxy</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/security/">
+            <span class="level-start">
+                <span class="level-item">security</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/test/">
+            <span class="level-start">
+                <span class="level-item">test</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 14px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 18px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/entity/" style="font-size: 10px;">entity</a> <a href="/tags/error/" style="font-size: 14px;">error</a> <a href="/tags/excel/" style="font-size: 12px;">excel</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/library/" style="font-size: 16px;">library</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 16px;">module</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 16px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12px;">xlsx</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    LC&amp;MC
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 shinekidd&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

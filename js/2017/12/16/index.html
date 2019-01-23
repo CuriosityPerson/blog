@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="LC &amp; MC">
 <meta property="og:description" content="最近在使用腾讯云对象存储。。。下载一张图片、一个 pdf 、一首 mp3、一本 txt 小说。发现 Chrome FireFox 总是“很人性”的主动在标签中“打开了包装”！我要的是保存！是下载！ f**k ！！前端如何下载文件？？？">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-08T01:23:12.486Z">
+<meta property="og:updated_time" content="2019-01-23T02:48:41.968Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端下载文件的困扰">
 <meta name="twitter:description" content="最近在使用腾讯云对象存储。。。下载一张图片、一个 pdf 、一首 mp3、一本 txt 小说。发现 Chrome FireFox 总是“很人性”的主动在标签中“打开了包装”！我要的是保存！是下载！ f**k ！！前端如何下载文件？？？">
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 630 words)
+                    4 minutes read (About 651 words)
                 </span>
                 
             </div>
@@ -186,7 +186,7 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
 <ol>
 <li><p>作为消息主体中的响应头：就是上述这种情况</p>
 </li>
-<li><p>作为 multipart body 中的消息头：<a href="/html/2017/03/04/" title="form 表单">form 表单</a>的 enctype 属性设置为 multipart/form-data 时，Content-Disposition 出现在请求体 body 中</p>
+<li><p>作为 multipart body 中的消息头：<a href="/html/2017/03/06/" title="form 表单">form 表单</a>的 enctype 属性设置为 multipart/form-data 时，Content-Disposition 出现在请求体 body 中</p>
 </li>
 </ol>
 <p>腾讯云存储设置 Content-Disposition</p>
@@ -211,6 +211,7 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
 <p><em>注意</em><br>使用 ajax 下载存在跨域的问题，也不能从 https 下 http 域名的文件。</p>
 </blockquote>
 <h2 id="canvas-输出图片"><a href="#canvas-输出图片" class="headerlink" title="canvas 输出图片"></a>canvas 输出图片</h2><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">download</span>(<span class="hljs-params">url, mime = <span class="hljs-string">'image/png'</span></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> img = <span class="hljs-keyword">new</span> Image()</span><br><span class="line">  img.crossOrigin = <span class="hljs-string">'anonymous'</span></span><br><span class="line">  img.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> canvas = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'canvas'</span>)</span><br><span class="line">    canvas.width = img.naturalWidth</span><br><span class="line">    canvas.height = img.naturalHeight</span><br><span class="line">    <span class="hljs-keyword">let</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>)</span><br><span class="line">    ctx.drawImage(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span><br><span class="line">    <span class="hljs-keyword">let</span> dataURL = canvas.toDataURL(mime)</span><br><span class="line">    <span class="hljs-keyword">let</span> a = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'a'</span>)</span><br><span class="line">    a.download = <span class="hljs-string">''</span></span><br><span class="line">    a.href = dataURL</span><br><span class="line">    a.click()</span><br><span class="line">  &#125;</span><br><span class="line">  img.src = url</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后推荐一个可以保存文件的库: <a href="https://github.com/eligrey/FileSaver.js" target="_blank" rel="noopener">FileSaver</a></p>
 <center> — <em>The End</em> — </center>
 
         </div>
@@ -323,36 +324,10 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-15T02:57:12.977Z">2019-01-15</time></div>
-                    <a href="/uncategorized/2019/01/15/" class="has-link-black-ter is-size-6"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-27T00:54:50.579Z">2018-11-27</time></div>
-                    <a href="/uncategorized/2018/11/27/" class="has-link-black-ter is-size-6"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-07T16:00:00.000Z">2018-09-08</time></div>
-                    <a href="/tools/2018/09/08/" class="has-link-black-ter is-size-6">在 Vue 中使用 i18n 做国际化</a>
+                    <a href="/js/2018/09/08/" class="has-link-black-ter is-size-6">在 Vue 中使用 i18n 做国际化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/tools/">tools</a>
+                        <a class="has-link-grey -link" href="/categories/js/">js</a>
                     </p>
                 </div>
             </div>
@@ -384,6 +359,32 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
             </div>
         </article>
         
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-16T16:00:00.000Z">2018-04-17</time></div>
+                    <a href="/linux/2018/04/17/" class="has-link-black-ter is-size-6">linux 文件、目录的权限</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-15T16:00:00.000Z">2018-04-16</time></div>
+                    <a href="/linux/2018/04/16/" class="has-link-black-ter is-size-6">linux 下的 /etc/shadow 文件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -402,7 +403,7 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
                 <span class="level-item">css</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/git/">
@@ -426,15 +427,7 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
                 <span class="level-item">html</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/http/">
-            <span class="level-start">
-                <span class="level-item">http</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/js/">
@@ -442,7 +435,7 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
                 <span class="level-item">js</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">24</span>
+                <span class="level-item tag">27</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/">
@@ -453,9 +446,9 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
                 <span class="level-item tag">8</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/npm/">
+        <a class="level is-marginless" href="/categories/office/">
             <span class="level-start">
-                <span class="level-item">npm</span>
+                <span class="level-item">office</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -484,14 +477,6 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/tools/">
-            <span class="level-start">
-                <span class="level-item">tools</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
         </a></li>
             </ul>
         </div>
@@ -505,28 +490,6 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">January 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/09/">
@@ -546,17 +509,6 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">7</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/03/">
-                <span class="level-start">
-                    <span class="level-item">March 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -633,7 +585,7 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
                     <span class="level-item">August 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -644,7 +596,7 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
                     <span class="level-item">July 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -677,7 +629,7 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
                     <span class="level-item">April 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -688,7 +640,7 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
                     <span class="level-item">March 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -699,7 +651,18 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
                     <span class="level-item">February 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -715,7 +678,7 @@ attachment; filename="dog.jpg"   内容以附件的形式下载并保存到本�
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12.5px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 17.5px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 15px;">error</a> <a href="/tags/excel/" style="font-size: 12.5px;">excel</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 17.5px;">http</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 17.5px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 17.5px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12.5px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12.5px;">xlsx</a>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 14px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 18px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/entity/" style="font-size: 10px;">entity</a> <a href="/tags/error/" style="font-size: 14px;">error</a> <a href="/tags/excel/" style="font-size: 12px;">excel</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/library/" style="font-size: 16px;">library</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 16px;">module</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 16px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12px;">xlsx</a>
     </div>
 </div>
 

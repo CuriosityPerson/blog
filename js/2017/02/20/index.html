@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="LC &amp; MC">
 <meta property="og:description" content="HTML 5 新增了一些有意思的 API，本文介绍基本用法并附上部分 demo">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-16T11:06:04.536Z">
+<meta property="og:updated_time" content="2019-01-22T06:20:31.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html5 新增的 API">
 <meta name="twitter:description" content="HTML 5 新增了一些有意思的 API，本文介绍基本用法并附上部分 demo">
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    19 minutes read (About 2803 words)
+                    19 minutes read (About 2801 words)
                 </span>
                 
             </div>
@@ -278,7 +278,6 @@
 <script>
 var target = document.querySelector('.target')
 var dropzone = document.querySelector('.dropzone')
-var draggableDiv = null
 target.addEventListener('dragstart', function(event) {
   event.target.classList.add('active')
   console.log('dragstart')
@@ -288,7 +287,6 @@ target.addEventListener('drag', function(event) {
 })
 target.addEventListener('dragend', function(event) {
   event.target.classList.remove('active')
-  draggableDiv = event.target
   console.log('dragend')
 })
 dropzone.addEventListener('dragenter', function(event) {
@@ -321,7 +319,7 @@ dropzone.addEventListener('drop', function(event) {
       var img = new Image()
       img.src = data
       dropzone.appendChild(img)
-    } else {
+    } else if (data) {
       dropzone.innerText = data
     }
   }
@@ -334,7 +332,7 @@ dropzone.addEventListener('drop', function(event) {
 <p>实现代码如下：</p>
 <figure class="highlight css hljs"><figcaption><span>css</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/* 可被拖拽的 div */</span></span><br><span class="line"><span class="hljs-selector-class">.target</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-number">#999</span>;</span><br><span class="line">  <span class="hljs-attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.target</span><span class="hljs-selector-class">.active</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">background</span>: yellow;</span><br><span class="line">  <span class="hljs-attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/* 拖拽放置的容器 */</span></span><br><span class="line"><span class="hljs-selector-class">.dropzone</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;</span><br><span class="line">  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;</span><br><span class="line">  <span class="hljs-attribute">border</span>: <span class="hljs-number">5px</span> dashed blue;</span><br><span class="line">  <span class="hljs-attribute">background</span>: gray;</span><br><span class="line">  <span class="hljs-attribute">text-align</span>: center;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.dropzone</span><span class="hljs-selector-class">.active</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">border-color</span>: green;</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(0, 0, 0, .3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight html hljs"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"target"</span> <span class="hljs-attr">draggable</span>=<span class="hljs-string">"true"</span>&gt;</span> this div is draggable <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dropzone"</span>&gt;</span> Drag something into here <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js hljs"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> target = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.target'</span>) <span class="hljs-comment">// 目标</span></span><br><span class="line"><span class="hljs-keyword">var</span> dropzone = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.dropzone'</span>) <span class="hljs-comment">// 放置区</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 可拖拽的目标事件 */</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 拖拽目标开始时触发一次</span></span><br><span class="line">target.addEventListener(<span class="hljs-string">'dragstart'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.add(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 鼠标未松开拖拽目标，将持续触发该事件</span></span><br><span class="line">target.addEventListener(<span class="hljs-string">'drag'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'drag'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 鼠标松开拖拽目标，触发一次</span></span><br><span class="line">target.addEventListener(<span class="hljs-string">'dragend'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.remove(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 放置区事件 */</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 目标进入放置区，触发一次</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'dragenter'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.add(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 目标处于放置区，将持续触发该事件</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'dragover'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 如果想要捕获 drop 事件 就一定得在该事件中阻止默认事件</span></span><br><span class="line">  event.preventDefault()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 目标离开放置区，触发一次</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'dragleave'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.remove(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 目标在放置区被释放，触发一次</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'drop'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 拖拽的是 target DOM</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (target.classList.contains(<span class="hljs-string">'active'</span>)) &#123;</span><br><span class="line">    dropzone.appendChild(target)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 拖拽的是文件</span></span><br><span class="line">  <span class="hljs-keyword">var</span> files = event.dataTransfer.files</span><br><span class="line">  <span class="hljs-keyword">if</span> (files.length) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; files.length; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">var</span> p = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'p'</span>)</span><br><span class="line">      p.innerHTML = files[i].name + <span class="hljs-string">' '</span> + (files[i].size / <span class="hljs-number">1024</span>).toFixed(<span class="hljs-number">2</span>) + <span class="hljs-string">'KB'</span></span><br><span class="line">      dropzone.appendChild(p)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-comment">// 拖入的是文本</span></span><br><span class="line">    <span class="hljs-keyword">var</span> data = event.dataTransfer.getData(<span class="hljs-string">'text/plain'</span>) || event.dataTransfer.getData(<span class="hljs-string">'text/uri-list'</span>)</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/^data:image/</span>.test(data)) &#123;</span><br><span class="line">      <span class="hljs-keyword">var</span> img = <span class="hljs-keyword">new</span> Image()</span><br><span class="line">      img.src = data</span><br><span class="line">      dropzone.appendChild(img)</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      dropzone.innerText = data</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  event.target.classList.remove(<span class="hljs-string">'active'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 阻止默认动作（如打开一些元素的链接）</span></span><br><span class="line">  event.preventDefault()</span><br><span class="line">&#125;, <span class="hljs-literal">true</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> target = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.target'</span>) <span class="hljs-comment">// 目标</span></span><br><span class="line"><span class="hljs-keyword">var</span> dropzone = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.dropzone'</span>) <span class="hljs-comment">// 放置区</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 可拖拽的目标事件 */</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 拖拽目标开始时触发一次</span></span><br><span class="line">target.addEventListener(<span class="hljs-string">'dragstart'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.add(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 鼠标未松开拖拽目标，将持续触发该事件</span></span><br><span class="line">target.addEventListener(<span class="hljs-string">'drag'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'drag'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 鼠标松开拖拽目标，触发一次</span></span><br><span class="line">target.addEventListener(<span class="hljs-string">'dragend'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.remove(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 放置区事件 */</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 目标进入放置区，触发一次</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'dragenter'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.add(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 目标处于放置区，将持续触发该事件</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'dragover'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 如果想要捕获 drop 事件 就一定得在该事件中阻止默认事件</span></span><br><span class="line">  event.preventDefault()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 目标离开放置区，触发一次</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'dragleave'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  event.target.classList.remove(<span class="hljs-string">'active'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 目标在放置区被释放，触发一次</span></span><br><span class="line">dropzone.addEventListener(<span class="hljs-string">'drop'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 拖拽的是 target DOM</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (target.classList.contains(<span class="hljs-string">'active'</span>)) &#123;</span><br><span class="line">    dropzone.appendChild(target)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 拖拽的是文件</span></span><br><span class="line">  <span class="hljs-keyword">var</span> files = event.dataTransfer.files</span><br><span class="line">  <span class="hljs-keyword">if</span> (files.length) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; files.length; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">var</span> p = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'p'</span>)</span><br><span class="line">      p.innerHTML = files[i].name + <span class="hljs-string">' '</span> + (files[i].size / <span class="hljs-number">1024</span>).toFixed(<span class="hljs-number">2</span>) + <span class="hljs-string">'KB'</span></span><br><span class="line">      dropzone.appendChild(p)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-comment">// 拖入的是文本</span></span><br><span class="line">    <span class="hljs-keyword">var</span> data = event.dataTransfer.getData(<span class="hljs-string">'text/plain'</span>) || event.dataTransfer.getData(<span class="hljs-string">'text/uri-list'</span>)</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/^data:image/</span>.test(data)) &#123;</span><br><span class="line">      <span class="hljs-keyword">var</span> img = <span class="hljs-keyword">new</span> Image()</span><br><span class="line">      img.src = data</span><br><span class="line">      dropzone.appendChild(img)</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (data) &#123;</span><br><span class="line">      dropzone.innerText = data</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  event.target.classList.remove(<span class="hljs-string">'active'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 阻止默认动作（如打开一些元素的链接）</span></span><br><span class="line">  event.preventDefault()</span><br><span class="line">&#125;, <span class="hljs-literal">true</span>)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>拖拽事件是支持冒泡的，可以在 document 上监听上述事件。注意：drop 事件在 dragend 之前触发！！在 dragover 中阻止默认事件，才能监听到 drop 事件！！！</p>
 </blockquote>
@@ -381,7 +379,7 @@ dropzone.addEventListener('drop', function(event) {
 <td>开始读取指定的 Blob 中的内容, 一旦完成, result 属性中保存的将是被读取文件的 ArrayBuffer 数据对象.</td>
 </tr>
 <tr>
-<td>readerAsBinaryString(blob)</td>
+<td>readAsBinaryString(blob)</td>
 <td>开始读取指定的 Blob 中的内容。一旦完成，result 属性中将包含所读取文件的原始二进制数据。<code>该特性是非标准!</code></td>
 </tr>
 <tr>
@@ -690,36 +688,10 @@ dropzone.addEventListener('drop', function(event) {
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-15T02:57:12.977Z">2019-01-15</time></div>
-                    <a href="/uncategorized/2019/01/15/" class="has-link-black-ter is-size-6"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-27T00:54:50.579Z">2018-11-27</time></div>
-                    <a href="/uncategorized/2018/11/27/" class="has-link-black-ter is-size-6"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-07T16:00:00.000Z">2018-09-08</time></div>
-                    <a href="/tools/2018/09/08/" class="has-link-black-ter is-size-6">在 Vue 中使用 i18n 做国际化</a>
+                    <a href="/js/2018/09/08/" class="has-link-black-ter is-size-6">在 Vue 中使用 i18n 做国际化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/tools/">tools</a>
+                        <a class="has-link-grey -link" href="/categories/js/">js</a>
                     </p>
                 </div>
             </div>
@@ -751,6 +723,32 @@ dropzone.addEventListener('drop', function(event) {
             </div>
         </article>
         
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-16T16:00:00.000Z">2018-04-17</time></div>
+                    <a href="/linux/2018/04/17/" class="has-link-black-ter is-size-6">linux 文件、目录的权限</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-15T16:00:00.000Z">2018-04-16</time></div>
+                    <a href="/linux/2018/04/16/" class="has-link-black-ter is-size-6">linux 下的 /etc/shadow 文件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -769,7 +767,7 @@ dropzone.addEventListener('drop', function(event) {
                 <span class="level-item">css</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/git/">
@@ -793,15 +791,7 @@ dropzone.addEventListener('drop', function(event) {
                 <span class="level-item">html</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/http/">
-            <span class="level-start">
-                <span class="level-item">http</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/js/">
@@ -809,7 +799,7 @@ dropzone.addEventListener('drop', function(event) {
                 <span class="level-item">js</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">24</span>
+                <span class="level-item tag">27</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/">
@@ -820,9 +810,9 @@ dropzone.addEventListener('drop', function(event) {
                 <span class="level-item tag">8</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/npm/">
+        <a class="level is-marginless" href="/categories/office/">
             <span class="level-start">
-                <span class="level-item">npm</span>
+                <span class="level-item">office</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -851,14 +841,6 @@ dropzone.addEventListener('drop', function(event) {
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/tools/">
-            <span class="level-start">
-                <span class="level-item">tools</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
         </a></li>
             </ul>
         </div>
@@ -872,28 +854,6 @@ dropzone.addEventListener('drop', function(event) {
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">January 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/09/">
@@ -913,17 +873,6 @@ dropzone.addEventListener('drop', function(event) {
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">7</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/03/">
-                <span class="level-start">
-                    <span class="level-item">March 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1000,7 +949,7 @@ dropzone.addEventListener('drop', function(event) {
                     <span class="level-item">August 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1011,7 +960,7 @@ dropzone.addEventListener('drop', function(event) {
                     <span class="level-item">July 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1044,7 +993,7 @@ dropzone.addEventListener('drop', function(event) {
                     <span class="level-item">April 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1055,7 +1004,7 @@ dropzone.addEventListener('drop', function(event) {
                     <span class="level-item">March 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -1066,7 +1015,18 @@ dropzone.addEventListener('drop', function(event) {
                     <span class="level-item">February 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -1082,7 +1042,7 @@ dropzone.addEventListener('drop', function(event) {
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12.5px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 17.5px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/error/" style="font-size: 15px;">error</a> <a href="/tags/excel/" style="font-size: 12.5px;">excel</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/headers/" style="font-size: 10px;">headers</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 17.5px;">http</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 17.5px;">module</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/parser/" style="font-size: 10px;">parser</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 17.5px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12.5px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12.5px;">xlsx</a>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 14px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 18px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/entity/" style="font-size: 10px;">entity</a> <a href="/tags/error/" style="font-size: 14px;">error</a> <a href="/tags/excel/" style="font-size: 12px;">excel</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/library/" style="font-size: 16px;">library</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 16px;">module</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 16px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12px;">xlsx</a>
     </div>
 </div>
 
