@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="LC &amp; MC">
 <meta property="og:description" content="针对 XSS、CSRF 攻击的常规做法">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-28T13:49:24.632Z">
+<meta property="og:updated_time" content="2019-01-24T08:20:41.619Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web 安全预防">
 <meta name="twitter:description" content="针对 XSS、CSRF 攻击的常规做法">
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 527 words)
+                    4 minutes read (About 552 words)
                 </span>
                 
             </div>
@@ -177,9 +177,12 @@
 <a id="more"></a>
 <h2 id="预防-XSS"><a href="#预防-XSS" class="headerlink" title="预防 XSS"></a>预防 XSS</h2><p>主要是服务器要对用户的输入进行编码、过滤、校正，</p>
 <ul>
-<li>对用户输入的数据进行HTML Entity编码</li>
-<li>移除用户上传的DOM属性，如onerror等，移除用户上传的style节点，script节点，iframe节点等。</li>
-<li>避免直接对HTML Entity编码，使用DOM Prase转换，校正不配对的DOM标签。</li>
+<li>对用户输入的数据进行 HTML Entity 编码</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> userInput = <span class="hljs-string">'&lt;script&gt; alert("hi") &lt;/script&gt;'</span></span><br><span class="line"><span class="hljs-keyword">var</span> wrapper = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>)</span><br><span class="line">div.innerText = userInput</span><br><span class="line"><span class="hljs-built_in">console</span>.log(div.innerHTML)</span><br><span class="line"><span class="hljs-comment">// "&amp;lt;script&amp;gt; alert("hi") &amp;lt;/script&amp;gt;"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>移除用户上传的 DOM 属性，如 onerror 等，移除用户上传的 style 节点，script 节点，iframe 节点等。</li>
+<li>避免直接对 HTML Entity 编码，使用 DOM Prase 转换，校正不配对的 DOM 标签。</li>
 </ul>
 <h2 id="预防-CSRF"><a href="#预防-CSRF" class="headerlink" title="预防 CSRF"></a>预防 CSRF</h2><h3 id="HTTP-Referer"><a href="#HTTP-Referer" class="headerlink" title="HTTP Referer"></a>HTTP Referer</h3><p>根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址。如果该来源地址不可信，则务器拒接请求。</p>
 <p>优点：实现成本低<br>缺点：浏览器可设置不提供 Referer，低版本浏览器可篡改 Referer</p>
