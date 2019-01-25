@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="LC &amp; MC">
 <meta property="og:description" content="纪律工作中使用 git 的一些实践经验">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-25T07:32:17.428Z">
+<meta property="og:updated_time" content="2019-01-25T07:59:04.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 实践">
 <meta name="twitter:description" content="纪律工作中使用 git 的一些实践经验">
@@ -178,7 +178,17 @@
 <h2 id="修改历史提交"><a href="#修改历史提交" class="headerlink" title="修改历史提交"></a>修改历史提交</h2><p>git commit –amend 可以修改最后一次提交，但对于历史提交，要如何修改？</p>
 <p>比如你当前在 dev 分支</p>
 <p>输入如下命令进入 rebase 交互模式</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i [dev | HEAD]</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">把你要要修改的 commit 前的 `pick` 改成 `edit` 或者 `e` ， wq 保存退出</span><br><span class="line"></span><br><span class="line">用 git <span class="hljs-built_in">log</span> 你发现哪个 commit 在第一个了。</span><br><span class="line"></span><br><span class="line">这时你可以使用 git commit --amend 修改这个 commit。修改完后 git rebase --<span class="hljs-built_in">continue</span> 就可以了。</span><br><span class="line"></span><br><span class="line">&gt; 中途可以 git rebase --abrot 取消操作</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">## 合并提交</span></span><br><span class="line"></span><br><span class="line">合并多次相似的提交</span><br><span class="line"></span><br><span class="line">比如合并最后 2 提交</span><br><span class="line"></span><br><span class="line">操作如下</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">git rebase -i HEAD~2</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i [dev | HEAD]</span><br></pre></td></tr></table></figure>
+<p>把你要要修改的 commit 前的 <code>pick</code> 改成 <code>edit</code> 或者 <code>e</code> ， wq 保存退出</p>
+<p>用 git log 你发现哪个 commit 在第一个了。</p>
+<p>这时你可以使用 git commit –amend 修改这个 commit。修改完后 git rebase –continue 就可以了。</p>
+<blockquote>
+<p>中途可以 git rebase –abrot 取消操作</p>
+</blockquote>
+<h2 id="合并提交"><a href="#合并提交" class="headerlink" title="合并提交"></a>合并提交</h2><p>合并多次相似的提交</p>
+<p>比如合并最后 2 提交</p>
+<p>操作如下</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~2</span><br></pre></td></tr></table></figure>
 <p>出现历史 commit 的列表，最下面的体积记录最新。</p>
 <p>git 可以把后面新的提交压缩到之前的提交，只要把列表前的 <code>pick</code> 改成 <code>s</code> 或 <code>squash</code></p>
 <p>输入 wq 指令保存后弹出编辑 message 的界面，可以为此次合并输入新的 message。</p>
@@ -270,6 +280,10 @@
         <a class="is-flex" href="#修改历史提交">
         <span class="has-mr-6">1</span>
         <span>修改历史提交</span>
+        </a></li><li>
+        <a class="is-flex" href="#合并提交">
+        <span class="has-mr-6">2</span>
+        <span>合并提交</span>
         </a></li></ul>
         </div>
     </div>
