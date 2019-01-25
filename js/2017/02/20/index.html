@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="LC &amp; MC">
 <meta property="og:description" content="HTML 5 新增了一些有意思的 API，本文介绍基本用法并附上部分 demo">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-24T08:02:30.361Z">
+<meta property="og:updated_time" content="2019-01-24T10:54:22.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html5 新增的 API">
 <meta name="twitter:description" content="HTML 5 新增了一些有意思的 API，本文介绍基本用法并附上部分 demo">
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 minutes read (About 3002 words)
+                    20 minutes read (About 3017 words)
                 </span>
                 
             </div>
@@ -186,12 +186,14 @@
 </blockquote>
 <h2 id="操作类名"><a href="#操作类名" class="headerlink" title="操作类名"></a>操作类名</h2><h3 id="classList"><a href="#classList" class="headerlink" title="classList"></a>classList</h3><p>DOM 上部署了 classList 属性，可以访问 DOM 所有的类名，并且可以操作该属性</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'div'</span>)</span><br><span class="line">div.classList <span class="hljs-comment">// DOMTokenList(2) ["item", "active", value: "item active"]</span></span><br></pre></td></tr></table></figure>
-<h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><p>增加类名，支持多个参数，逗号分隔<br><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.classList.add(<span class="hljs-string">'animated'</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h3><p>移除类名，支持多个参数，逗号分隔</p>
+<h3 id="add"><a href="#add" class="headerlink" title="add()"></a>add()</h3><p>增加类名，支持多个参数，逗号分隔<br><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.classList.add(<span class="hljs-string">'animated'</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="remove"><a href="#remove" class="headerlink" title="remove()"></a>remove()</h3><p>移除类名，支持多个参数，逗号分隔</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.classList.remove(<span class="hljs-string">'active'</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="contains"><a href="#contains" class="headerlink" title="contains"></a>contains</h3><p>判断某个类名是否存在</p>
+<h3 id="item"><a href="#item" class="headerlink" title="item()"></a>item()</h3><p>返回指定索引位置的 class</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.classList.item(<span class="hljs-number">0</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="contains"><a href="#contains" class="headerlink" title="contains()"></a>contains()</h3><p>判断某个类名是否存在</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> isAnimated = div.classList.contains(<span class="hljs-string">'animated'</span>) <span class="hljs-comment">// 返回布尔值</span></span><br></pre></td></tr></table></figure>
-<h3 id="toggle"><a href="#toggle" class="headerlink" title="toggle"></a>toggle</h3><p>删除添加之间切换一个类名</p>
+<h3 id="toggle"><a href="#toggle" class="headerlink" title="toggle()"></a>toggle()</h3><p>删除添加之间切换一个类名</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.classList.toggle(<span class="hljs-string">'animated'</span>, !isAnimated)</span><br></pre></td></tr></table></figure>
 <h2 id="访问历史-API"><a href="#访问历史-API" class="headerlink" title="访问历史 API"></a>访问历史 API</h2><p>history 对象 HTML5 之前含有的 API</p>
 <h3 id="forward-back-go"><a href="#forward-back-go" class="headerlink" title="forward() back() go()"></a>forward() back() go()</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 控制浏览历史前进一个记录</span></span><br><span class="line"><span class="hljs-built_in">window</span>.history.forward()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 控制浏览历史后退一个记录</span></span><br><span class="line"><span class="hljs-built_in">window</span>.history.back()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 控制浏览历史跳转到指定的一个记录，0 是刷新，正整数是前进，负整数是后退</span></span><br><span class="line"><span class="hljs-built_in">window</span>.history.go(n)</span><br></pre></td></tr></table></figure>
@@ -611,19 +613,23 @@ dropzone.addEventListener('drop', function(event) {
         </a></li><li>
         <a class="is-flex" href="#add">
         <span class="has-mr-6">2.2</span>
-        <span>add</span>
+        <span>add()</span>
         </a></li><li>
         <a class="is-flex" href="#remove">
         <span class="has-mr-6">2.3</span>
-        <span>remove</span>
+        <span>remove()</span>
+        </a></li><li>
+        <a class="is-flex" href="#item">
+        <span class="has-mr-6">2.4</span>
+        <span>item()</span>
         </a></li><li>
         <a class="is-flex" href="#contains">
-        <span class="has-mr-6">2.4</span>
-        <span>contains</span>
+        <span class="has-mr-6">2.5</span>
+        <span>contains()</span>
         </a></li><li>
         <a class="is-flex" href="#toggle">
-        <span class="has-mr-6">2.5</span>
-        <span>toggle</span>
+        <span class="has-mr-6">2.6</span>
+        <span>toggle()</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#访问历史-API">
         <span class="has-mr-6">3</span>
@@ -792,7 +798,7 @@ dropzone.addEventListener('drop', function(event) {
                 <span class="level-item">git</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/hotkey/">
@@ -944,7 +950,7 @@ dropzone.addEventListener('drop', function(event) {
                     <span class="level-item">October 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1059,7 +1065,7 @@ dropzone.addEventListener('drop', function(event) {
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 14px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 18px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/entity/" style="font-size: 10px;">entity</a> <a href="/tags/error/" style="font-size: 14px;">error</a> <a href="/tags/excel/" style="font-size: 12px;">excel</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/library/" style="font-size: 16px;">library</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 16px;">module</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 16px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12px;">xlsx</a>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExpress/" style="font-size: 12px;">RegExpress</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/ajax/" style="font-size: 14px;">ajax</a> <a href="/tags/amaze/" style="font-size: 10px;">amaze</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chart/" style="font-size: 10px;">chart</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css3/" style="font-size: 18px;">css3</a> <a href="/tags/cubic/" style="font-size: 10px;">cubic</a> <a href="/tags/device/" style="font-size: 10px;">device</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/entity/" style="font-size: 10px;">entity</a> <a href="/tags/error/" style="font-size: 14px;">error</a> <a href="/tags/excel/" style="font-size: 12px;">excel</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/h5-browser/" style="font-size: 10px;">h5-browser</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/library/" style="font-size: 16px;">library</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/module/" style="font-size: 16px;">module</a> <a href="/tags/passwd/" style="font-size: 10px;">passwd</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/runlevel/" style="font-size: 10px;">runlevel</a> <a href="/tags/shadow/" style="font-size: 10px;">shadow</a> <a href="/tags/snippet/" style="font-size: 10px;">snippet</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/standard/" style="font-size: 10px;">standard</a> <a href="/tags/syntax/" style="font-size: 16px;">syntax</a> <a href="/tags/tag/" style="font-size: 20px;">tag</a> <a href="/tags/tag-attr/" style="font-size: 10px;">tag-attr</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tips/" style="font-size: 12px;">tips</a> <a href="/tags/void/" style="font-size: 10px;">void</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/xlsx/" style="font-size: 12px;">xlsx</a>
     </div>
 </div>
 
