@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="LC &amp; MC">
 <meta property="og:description" content="纪律工作中使用 git 的一些实践经验">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-25T07:59:04.402Z">
+<meta property="og:updated_time" content="2019-01-25T08:04:47.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 实践">
 <meta name="twitter:description" content="纪律工作中使用 git 的一些实践经验">
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 383 words)
+                    3 minutes read (About 412 words)
                 </span>
                 
             </div>
@@ -186,11 +186,12 @@
 <p>中途可以 git rebase –abrot 取消操作</p>
 </blockquote>
 <h2 id="合并提交"><a href="#合并提交" class="headerlink" title="合并提交"></a>合并提交</h2><p>合并多次相似的提交</p>
-<p>比如合并最后 2 提交</p>
+<p>比如合并最后 2 提交为一次提交</p>
 <p>操作如下</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~2</span><br></pre></td></tr></table></figure>
 <p>出现历史 commit 的列表，最下面的体积记录最新。</p>
-<p>git 可以把后面新的提交压缩到之前的提交，只要把列表前的 <code>pick</code> 改成 <code>s</code> 或 <code>squash</code></p>
+<p>git 可以把后面新的提交压缩到之前的提交，只要把列表前的 <code>pick</code> 改成 <code>s</code> 或 <code>squash</code>。</p>
+<p>上面的命令显示 2 条 commit ，我们把第二条 commit 的 <code>pick</code> 改成 <code>s</code> 。</p>
 <p>输入 wq 指令保存后弹出编辑 message 的界面，可以为此次合并输入新的 message。</p>
 <blockquote>
 <p>只能把设为 <code>squash</code> 的 commit 合并到它前一个 commit，所以第一个 commit 不能设为 <code>squash</code><br>如果设置的 <code>squash</code> 不连续，会产生多个合并，并多次提示输入新的 message</p>
