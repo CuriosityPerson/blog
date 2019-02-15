@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="LC &amp; MC">
 <meta property="og:description" content="正则基本语法整理">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-04T14:40:18.343Z">
+<meta property="og:updated_time" content="2019-02-14T06:20:53.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式语法">
 <meta name="twitter:description" content="正则基本语法整理">
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    14 minutes read (About 2088 words)
+                    14 minutes read (About 2079 words)
                 </span>
                 
             </div>
@@ -175,7 +175,7 @@
 <p>正则基本语法整理</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h2><p><strong>正则表达式是一种表示字符串结构的方法</strong></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>正则表达式是一种表示字符串结构的方法</strong></p>
 <p>以字面量的形式使用（执行效率较高）</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> regex = <span class="hljs-regexp">/xyz/igm</span>;</span><br></pre></td></tr></table></figure>
 <p>使用 RegExp 构造函数（执行效率较低，但可动态传参）</p>
@@ -185,8 +185,7 @@
 <p>字符串的实例与正则有关的方法</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">String</span>.prototype.match() <span class="hljs-comment">// 返回一个数组，成员是所有匹配的子字符串。</span></span><br><span class="line"><span class="hljs-string">'hello word'</span>.match(<span class="hljs-regexp">/l(l)/</span>) <span class="hljs-comment">// ["l", index: 2, input: "hello word", groups: undefined]</span></span><br><span class="line"><span class="hljs-comment">// 全局匹配模式 和 exec 不一样</span></span><br><span class="line"><span class="hljs-string">'hello word hello word'</span>.match(<span class="hljs-regexp">/l(l)/g</span>) <span class="hljs-comment">// ["ll", "ll"]</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">String</span>.prototype.search() <span class="hljs-comment">// 按照给定的正则表达式进行搜索，返回一个整数，表示匹配开始的位置。</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">String</span>.prototype.replace() <span class="hljs-comment">// 按照给定的正则表达式进行替换，返回替换后的字符串。</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 模拟 String.trim()</span></span><br><span class="line"><span class="hljs-string">' hello world '</span>.replace(<span class="hljs-regexp">/^\s+|\s+$/g</span>, <span class="hljs-string">''</span>) <span class="hljs-comment">// hello world</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 取掉小数点后面的零</span></span><br><span class="line"><span class="hljs-string">`3.0100`</span>.replace(<span class="hljs-regexp">/(\.?0+$)/</span>, <span class="hljs-string">''</span>) <span class="hljs-comment">// 3.01</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 格式化手机号</span></span><br><span class="line"><span class="hljs-string">'18579076331'</span>.replace(<span class="hljs-regexp">/(^\d&#123;3&#125;)(\d&#123;4&#125;)(\d&#123;4&#125;)/</span>, <span class="hljs-string">`$1 $2 $3`</span>) <span class="hljs-comment">// 185 7907 6331</span></span><br><span class="line"><span class="hljs-comment">// $&amp;：匹配的子字符串。</span></span><br><span class="line"><span class="hljs-comment">// $`：匹配结果前面的文本。</span></span><br><span class="line"><span class="hljs-comment">// $'：匹配结果后面的文本。</span></span><br><span class="line"><span class="hljs-comment">// $n：匹配成功的第n组内容，n是从1开始的自然数。</span></span><br><span class="line"><span class="hljs-comment">// $$：指代美元符号$。</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 英文首字母大写</span></span><br><span class="line"><span class="hljs-string">' hello world '</span>.replace(<span class="hljs-regexp">/\b\w/g</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">match</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> match.toUpperCase()</span><br><span class="line">&#125;) </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 字符串分割</span></span><br><span class="line"><span class="hljs-built_in">String</span>.prototype.split(separator, [limit])</span><br><span class="line"><span class="hljs-string">'1 2  3  4'</span>.split(<span class="hljs-regexp">/\s+/</span>) <span class="hljs-comment">// ["1", "2", "3", "4"]</span></span><br><span class="line"><span class="hljs-string">'1 2  3  4'</span>.split(<span class="hljs-regexp">/\s+/</span>, <span class="hljs-number">2</span>) <span class="hljs-comment">// ["1", "2"]</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">String</span>.prototype.split() <span class="hljs-comment">// 按照给定规则进行字符串分割，返回一个数组，包含分割后的各个成员。</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="2、匹配规则"><a href="#2、匹配规则" class="headerlink" title="2、匹配规则"></a>2、匹配规则</h2><p><strong>字面量字符（literal characters）与元字符（metacharacters）</strong></p>
-<p>字面量字符指的是该字符只表示它字面的含义，如 <code>x</code> <code>y</code> <code>z</code>。元字符指的是某些具有特殊含义字符，如下表</p>
+<h2 id="匹配规则"><a href="#匹配规则" class="headerlink" title="匹配规则"></a>匹配规则</h2><h3 id="字面量字符与元字符"><a href="#字面量字符与元字符" class="headerlink" title="字面量字符与元字符"></a>字面量字符与元字符</h3><p>字面量字符指的是该字符只表示它字面的含义，如 <code>x</code> <code>y</code> <code>z</code>。元字符指的是某些具有特殊含义字符，如下表</p>
 <table>
 <thead>
 <tr>
@@ -229,8 +228,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>字符类</strong></p>
-<p>用 <code>[xyz]</code> 表示有一系列字符可供选择，只要匹配 x y z 其中一个即可</p>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><p>用 <code>[xyz]</code> 表示有一系列字符可供选择，只要匹配 x y z 其中一个即可</p>
 <table>
 <thead>
 <tr>
@@ -261,8 +259,7 @@
 <blockquote>
 <p>连字符 <code>-</code> 只有在字符类中，并且是两个连续字符之间才有特殊含义，否则就是字面量字符。如 <code>/a-z/.test(&#39;b&#39;)</code> // false， <code>[z-a]</code> 是不合法的表达式，<code>[-a]</code> 表达式里的 <code>-</code> 是字面量字符</p>
 </blockquote>
-<p><strong>预定义模式</strong></p>
-<p>预定义模式指的是某些常见模式的简写方式</p>
+<h3 id="预定义模式"><a href="#预定义模式" class="headerlink" title="预定义模式"></a>预定义模式</h3><p>预定义模式指的是某些常见模式的简写方式</p>
 <table>
 <thead>
 <tr>
@@ -314,10 +311,8 @@
 </tr>
 </tbody>
 </table>
-<p><strong>重复类</strong></p>
-<p>模式的精确匹配次数，使用大括号<code>{}</code>表示。<code>{n}</code>表示恰好重复n次，<code>{n,}</code>表示至少重复n次，<code>{n, m}</code>表示重复不少于n次，不多于m次。</p>
-<p><strong>量词符</strong></p>
-<table>
+<h3 id="重复类"><a href="#重复类" class="headerlink" title="重复类"></a>重复类</h3><p>模式的精确匹配次数，使用大括号<code>{}</code>表示。<code>{n}</code>表示恰好重复n次，<code>{n,}</code>表示至少重复n次，<code>{n, m}</code>表示重复不少于n次，不多于m次。</p>
+<h3 id="量词符"><a href="#量词符" class="headerlink" title="量词符"></a>量词符</h3><table>
 <thead>
 <tr>
 <th>符号</th>
@@ -343,8 +338,7 @@
 <p><code>*</code> <code>+</code> 默认情况下都是最大可能匹配，即匹配直到下一个字符不满足匹配规则为止。这被称为贪婪模式 </p>
 </blockquote>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">'aaaaa'</span>.match(<span class="hljs-regexp">/a+/</span>) <span class="hljs-comment">// ["aaaaa", index: 0, input: "aaaaa", groups: undefined]</span></span><br><span class="line"><span class="hljs-comment">// 使用 +? *? 改成非贪婪匹配，效果和单独使用 ? 一样。。。？？</span></span><br></pre></td></tr></table></figure>
-<p><strong>特殊字符</strong></p>
-<p>正则表达式对一些不能打印的特殊字符，提供了表达方法</p>
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><p>正则表达式对一些不能打印的特殊字符，提供了表达方法</p>
 <table>
 <thead>
 <tr>
@@ -417,13 +411,11 @@
 </tr>
 </tbody>
 </table>
-<p><strong>三种修饰符</strong></p>
-<p> <code>i</code> <code>g</code> <code>m</code> 可组合使用</p>
+<h3 id="三种修饰符"><a href="#三种修饰符" class="headerlink" title="三种修饰符"></a>三种修饰符</h3><p> <code>i</code> <code>g</code> <code>m</code> 可组合使用</p>
 <p><code>ignorecase</code>：忽略英文字母大小写</p>
 <p><code>global</code>：连续匹配（全局匹配），匹配全部符合条件的结果，主要用于搜索和替换。str.search(/xx/g) str.match(/xx/g) reg.exec(str) 等方法里常见</p>
 <p><code>multiline</code>：会修改<code>^</code>和<code>$</code>的行为，即<code>^</code>和<code>$</code>会识别换行<br><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/^abc$/.test(<span class="hljs-string">'\nabc\n'</span>) <span class="hljs-comment">// false</span></span><br><span class="line">/^abc$/m.test(<span class="hljs-string">'\nabc\n'</span>) <span class="hljs-comment">// true</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>组匹配</strong></p>
-<p>正则表达式的括号表示分组匹配，括号中的模式可以用来匹配分组的内容</p>
+<h3 id="组匹配"><a href="#组匹配" class="headerlink" title="组匹配"></a>组匹配</h3><p>正则表达式的括号表示分组匹配，括号中的模式可以用来匹配分组的内容</p>
 <blockquote>
 <p><em>注意</em><br>使用组匹配时，不宜同时使用g修饰符，否则match方法不会捕获分组的内容。</p>
 </blockquote>
@@ -523,14 +515,46 @@
                 Catalogue
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#1、概述">
+        <a class="is-flex" href="#概述">
         <span class="has-mr-6">1</span>
-        <span>1、概述</span>
+        <span>概述</span>
         </a></li><li>
-        <a class="is-flex" href="#2、匹配规则">
+        <a class="is-flex" href="#匹配规则">
         <span class="has-mr-6">2</span>
-        <span>2、匹配规则</span>
+        <span>匹配规则</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#字面量字符与元字符">
+        <span class="has-mr-6">2.1</span>
+        <span>字面量字符与元字符</span>
         </a></li><li>
+        <a class="is-flex" href="#字符类">
+        <span class="has-mr-6">2.2</span>
+        <span>字符类</span>
+        </a></li><li>
+        <a class="is-flex" href="#预定义模式">
+        <span class="has-mr-6">2.3</span>
+        <span>预定义模式</span>
+        </a></li><li>
+        <a class="is-flex" href="#重复类">
+        <span class="has-mr-6">2.4</span>
+        <span>重复类</span>
+        </a></li><li>
+        <a class="is-flex" href="#量词符">
+        <span class="has-mr-6">2.5</span>
+        <span>量词符</span>
+        </a></li><li>
+        <a class="is-flex" href="#特殊字符">
+        <span class="has-mr-6">2.6</span>
+        <span>特殊字符</span>
+        </a></li><li>
+        <a class="is-flex" href="#三种修饰符">
+        <span class="has-mr-6">2.7</span>
+        <span>三种修饰符</span>
+        </a></li><li>
+        <a class="is-flex" href="#组匹配">
+        <span class="has-mr-6">2.8</span>
+        <span>组匹配</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#附录">
         <span class="has-mr-6">3</span>
         <span>附录</span>

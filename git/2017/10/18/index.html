@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="LC &amp; MC">
 <meta property="og:description" content="记录工作中使用 git 的一些实践经验">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-25T08:07:03.317Z">
+<meta property="og:updated_time" content="2019-02-13T10:25:57.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 实践">
 <meta name="twitter:description" content="记录工作中使用 git 的一些实践经验">
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 412 words)
+                    3 minutes read (About 429 words)
                 </span>
                 
             </div>
@@ -180,10 +180,10 @@
 <p>输入如下命令进入 rebase 交互模式</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i [dev | HEAD]</span><br></pre></td></tr></table></figure>
 <p>把你要要修改的 commit 前的 <code>pick</code> 改成 <code>edit</code> 或者 <code>e</code> ， wq 保存退出</p>
-<p>用 git log 你发现哪个 commit 在第一个了。</p>
+<p>用 git log 你发现那个 commit 在第一个了。</p>
 <p>这时你可以使用 git commit –amend 修改这个 commit。修改完后 git rebase –continue 就可以了。</p>
 <blockquote>
-<p>中途可以 git rebase –abrot 取消操作</p>
+<p>提示<br>修改的 commit 之后的 commit 的 hash 都会变化！<br>中途可以 git rebase –abrot 取消操作</p>
 </blockquote>
 <h2 id="合并提交"><a href="#合并提交" class="headerlink" title="合并提交"></a>合并提交</h2><p>合并多次相似的提交</p>
 <p>比如合并最后 2 提交为一次提交</p>
