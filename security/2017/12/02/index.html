@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="LC &amp; MC">
 <meta property="og:description" content="http 允许在第三方网站发起对第一方网站的请求中，携带第一方网站的 cookie ，这很不安全。Google 起草了一份草案来改进 HTTP 协议，那就是为 Set-Cookie 响应头新增 SameSite 属性，它用来标明这个 cookie 是个“同站 cookie”，同站 cookie 只能作为第一方 cookie，不能作为第三方 cookie。  SameSite 有两个属性值，分别是">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-28T13:53:23.476Z">
+<meta property="og:updated_time" content="2019-03-28T08:20:17.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="预防 CSRF 攻击：同站 cookie">
 <meta name="twitter:description" content="http 允许在第三方网站发起对第一方网站的请求中，携带第一方网站的 cookie ，这很不安全。Google 起草了一份草案来改进 HTTP 协议，那就是为 Set-Cookie 响应头新增 SameSite 属性，它用来标明这个 cookie 是个“同站 cookie”，同站 cookie 只能作为第一方 cookie，不能作为第三方 cookie。  SameSite 有两个属性值，分别是">
@@ -186,14 +186,14 @@
 <li>window.open(url)</li>
 </ul>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: foo=1; SameSite=Strict</span><br><span class="line">Set-Cookie: bar=2; SameSite=Lax</span><br><span class="line">Set-Cookie: baz=3</span><br></pre></td></tr></table></figure>
-<p>在 b.com 中通过链接跳转到 a.com 会携带的cookie 有 bar 和 baz，但不会有 foo ！但是由 <script>、<link>、<img>、<iframe> 标签发起的 get 请求，由 <form> 发起的 post 请求中不会携带 bar 这个 cookie。</p>
+<p>在 b.com 中通过链接跳转到 a.com 会携带的cookie 有 bar 和 baz，但不会有 foo ！但是由 <code>&lt;script&gt;</code>、<code>&lt;link&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;iframe&gt;</code> 标签发起的 get 请求，由 <code>&lt;form&gt;</code> 发起的 post 请求中不会携带 bar 这个 cookie。</p>
 <h2 id="同站的判断"><a href="#同站的判断" class="headerlink" title="同站的判断"></a>同站的判断</h2><p>浏览器在判断第三方请求时用的判断逻辑并不是同源策略，而是用了 Public Suffix List 来判断。</p>
 <ul>
 <li>a.baidu.com 和 b.baidu.com 是同站</li>
 <li>baidu.com 和 baidu.com:8000 是同站</li>
 </ul>
 <center> — <em>The End</em> — </center>
-</script></p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -279,6 +279,10 @@
         <a class="is-flex" href="#SameSite-Lax">
         <span class="has-mr-6">2</span>
         <span>SameSite: Lax</span>
+        </a></li><li>
+        <a class="is-flex" href="#同站的判断">
+        <span class="has-mr-6">3</span>
+        <span>同站的判断</span>
         </a></li></ul>
         </div>
     </div>

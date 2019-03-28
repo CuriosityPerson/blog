@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="LC &amp; MC">
 <meta property="og:description" content="nodejs 的模块实现，采用的是 CommonJS 的规范，每个文件就是一个模块，有自己的作用域，里面定义的变量都是私有的。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-04T14:39:52.165Z">
+<meta property="og:updated_time" content="2019-02-18T05:56:19.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs 的模块规范">
 <meta name="twitter:description" content="nodejs 的模块实现，采用的是 CommonJS 的规范，每个文件就是一个模块，有自己的作用域，里面定义的变量都是私有的。">
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 464 words)
+                    4 minutes read (About 555 words)
                 </span>
                 
             </div>
@@ -189,8 +189,11 @@
 </blockquote>
 <h2 id="require-命令"><a href="#require-命令" class="headerlink" title="require 命令"></a>require 命令</h2><p>require 是 node 的内置命令，用于加载模块。需要提供一个模块路径，默认加载 js 文件，可省略 js 后缀。</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> moduleA = <span class="hljs-built_in">require</span>(<span class="hljs-string">'common/js/moduleA'</span>)</span><br><span class="line">moduleA.foo()</span><br></pre></td></tr></table></figure>
-<h3 id="require-缓存"><a href="#require-缓存" class="headerlink" title="require 缓存"></a>require 缓存</h3><p>node 会缓存加载的模块，所以多次 require 同一个模块会使用缓存的结果。</p>
+<h3 id="require-缓存"><a href="#require-缓存" class="headerlink" title="require 缓存"></a>require 缓存</h3><p>node 会缓存加载的模块，所以多次 require 同一个模块会使用缓存的结果。代码在第一次加载时运行一次，然后运行结果就被缓存了。</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> moduleA = <span class="hljs-built_in">require</span>(<span class="hljs-string">'common/js/moduleA'</span>)</span><br><span class="line">moduleA.say = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hi'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">require</span>(<span class="hljs-string">'common/js/moduleA'</span>).say() <span class="hljs-comment">// "Hi"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，缓存是根据绝对路径识别模块的，如果同样的模块名，但是保存在不同的路径，require命令还是会重新加载该模块。删除指定模块的缓存 delete require.cache[moduleName]</p>
+</blockquote>
 <h3 id="require-路径"><a href="#require-路径" class="headerlink" title="require 路径"></a>require 路径</h3><p>require 的参数可以是相对路径，也可以是绝对路径。在没有指定路径的时候 node 自动查找局部和全局安装路径。</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>)</span><br><span class="line"><span class="hljs-keyword">var</span> server = http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <center> — <em>The End</em> — </center>
