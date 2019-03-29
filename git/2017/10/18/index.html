@@ -16,7 +16,10 @@
 <meta property="og:description" content="记录工作中使用 git 的一些实践经验">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="//shinekidd.github.io/images/git/branch-manage.png">
-<meta property="og:updated_time" content="2019-03-28T08:18:22.664Z">
+<meta property="og:image" content="//shinekidd.github.io/images/git/merge-ff.png">
+<meta property="og:image" content="//shinekidd.github.io/images/git/merge-no-ff.png">
+<meta property="og:image" content="//shinekidd.github.io/images/git/merge-rebase.png">
+<meta property="og:updated_time" content="2019-03-29T06:20:14.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 实践">
 <meta name="twitter:description" content="记录工作中使用 git 的一些实践经验">
@@ -161,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 440 words)
+                    8 minutes read (About 1213 words)
                 </span>
                 
             </div>
@@ -178,30 +181,53 @@
 </blockquote>
 <a id="more"></a>
 <h2 id="分支策略图解"><a href="#分支策略图解" class="headerlink" title="分支策略图解"></a>分支策略图解</h2><p><img src="/images/git/branch-manage.png" alt=""></p>
-<h2 id="修改历史提交"><a href="#修改历史提交" class="headerlink" title="修改历史提交"></a>修改历史提交</h2><p>git commit –amend 可以修改最后一次提交，但对于历史提交，要如何修改？</p>
-<p>比如你当前在 dev 分支</p>
-<p>输入如下命令进入 rebase 交互模式</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i [dev | HEAD]</span><br></pre></td></tr></table></figure>
-<p>把你要要修改的 commit 前的 <code>pick</code> 改成 <code>edit</code> 或者 <code>e</code> ， wq 保存退出</p>
-<p>用 git log 你发现那个 commit 在第一个了。</p>
+<h2 id="git-rabse-i-交互模式"><a href="#git-rabse-i-交互模式" class="headerlink" title="git rabse -i 交互模式"></a>git rabse -i 交互模式</h2><h3 id="branch、-HEAD-参数解释"><a href="#branch、-HEAD-参数解释" class="headerlink" title="branch、 HEAD 参数解释"></a>branch、 HEAD 参数解释</h3><p><code>git rebase -i</code> 是对当前分支的 commit 进行操作。要求以参数 branch 或 HEAD 结尾</p>
+<ul>
+<li><p>HEAD 参数结尾，就是对指定的 HEAD 之后的的（不包括 HEAD）的提交进行 rebase 操作</p>
+</li>
+<li><p>branch （分支名）参数结尾，就是指定某个分支作为参照，寻找与之最近的一次公有的 commit （不包括该 commit）之后的提交，进行 rebase 操作</p>
+</li>
+</ul>
+<h3 id="修改历史提交"><a href="#修改历史提交" class="headerlink" title="修改历史提交"></a>修改历史提交</h3><p>git commit –amend 可以修改最后一次提交，但对于历史提交，要如何修改？</p>
+<p>比如你要修改 HEAD^^ 的提交</p>
+<p>执行 <code>rebase -i HEAD~3</code> 进入 rebase 交互模式</p>
+<p>把你要修改的 HEAD^^ 的 <code>pick</code> 改成 <code>edit</code> 或者 <code>e</code> ， wq 保存退出</p>
+<p>用 git log 你发现那个 HEAD^^ 在第一个了。</p>
 <p>这时你可以使用 git commit –amend 修改这个 commit。修改完后 git rebase –continue 就可以了。</p>
 <blockquote>
-<p>提示<br>修改的 commit 之后的 commit 的 hash 都会变化！<br>中途可以 git rebase –abrot 取消操作</p>
+<p>提示<br>被修改的 commit 节点之后的 commit 节点的 hash 都会变化！<br>中途可以 git rebase –abrot 取消操作</p>
 </blockquote>
-<h2 id="合并提交"><a href="#合并提交" class="headerlink" title="合并提交"></a>合并提交</h2><p>合并多次相似的提交</p>
-<p>比如合并最后 2 提交为一次提交</p>
-<p>操作如下</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~2</span><br></pre></td></tr></table></figure>
-<p>出现历史 commit 的列表，最下面的体积记录最新。</p>
+<h3 id="合并提交多个历史提交"><a href="#合并提交多个历史提交" class="headerlink" title="合并提交多个历史提交"></a>合并提交多个历史提交</h3><p>比如合并最后 3 提交为一次提交</p>
+<p>执行 <code>git rebase -i HEAD~3</code></p>
+<p>出现历史 commit 的列表，最下面的提交记录才最新的！</p>
 <p>git 可以把后面新的提交压缩到之前的提交，只要把列表前的 <code>pick</code> 改成 <code>s</code> 或 <code>squash</code>。</p>
-<p>上面的命令显示 2 条 commit ，我们把第二条 commit 的 <code>pick</code> 改成 <code>s</code> 。</p>
-<p>输入 wq 指令保存后弹出编辑 message 的界面，可以为此次合并输入新的 message。</p>
+<p>上面的命令显示 3 条 commit ，我们把第二、三条 commit 的 <code>pick</code> 改成 <code>s</code> 。</p>
+<p>输入 wq 指令保存后，会弹出编辑 message 的界面，可以为此次合并输入新的 message。默认使用第一、二、三条的 message 记录。</p>
 <blockquote>
-<p>只能把设为 <code>squash</code> 的 commit 合并到它前一个 commit，所以第一个 commit 不能设为 <code>squash</code><br>如果设置的 <code>squash</code> 不连续，会产生多个合并，并多次提示输入新的 message</p>
+<p>提醒<br>只能把设为 <code>squash</code> 的 commit 合并到它前一个 commit，所以第一个 commit 不能设为 <code>squash</code><br>如果设置的 <code>squash</code> 不连续，会产生多个合并，并多次提示输入新的 message<br><em>对本地版本库历史提交的修改导致与远程仓库版本不一致，需要强制 push ！合作开发的时候尤其需要注意，避免代码覆盖的情况！</em></p>
 </blockquote>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><p>假设：现在有两个分支 master （稳定版）、hotfix (修补)</p>
+<p>要求：在 hotfix 分支修复 bugs 后（已经累计多次 commit 记录），合并到 master 并发布新的稳定版</p>
+<p>合并分支操作（merge）分两种情况：fast-forward (快进)、recursive (递归)。其中快进模式不会产生额外的 commmit，递归模式需要为本次合并创建一个 commit</p>
+<p>下图分别是符合这两种情况的分支情况图示</p>
+<p><img src="/images/git/merge-ff.png" alt=""></p>
+<center>fast-forward (快进)</center>
+
+<hr>
+<p><img src="/images/git/merge-no-ff.png" alt=""></p>
+<center>recursive (递归)</center>
+
+<p>不管是快进模式还是递归模式，合并后 master 分支都会保留 hotfix 的历史提交记录。甚至还会多一个合并节点（递归模式）。<br>但是大多数情况下，我们希望 master 分支到提交记录是清晰、干净的。每次合并只出现一个合并节点。如下图</p>
+<p><img src="/images/git/merge-rebase.png" alt=""></p>
+<p>如何实现？依次执行如下指令</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到 master 分支</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="hljs-comment"># 压缩 hotfix 分支的 commit，并合并到工作区</span></span><br><span class="line">git merge hotfix --squash</span><br><span class="line"><span class="hljs-comment"># 查看工作区的状态，你可以看到工作区的变化</span></span><br><span class="line">git status</span><br><span class="line"><span class="hljs-comment"># 手动执行 commit 操作，完成最终合并</span></span><br><span class="line">git commit -am <span class="hljs-string">'merge hotfix into master: fixed xx xx x'</span></span><br><span class="line"><span class="hljs-comment"># 合并后可删除 hotfix 分支</span></span><br><span class="line">git branch -d hotfix</span><br></pre></td></tr></table></figure>
+<p>这时 master 分支合并 hotfix 分支只有一个 commit （在建立 hotfix 分支后，master 又有提交记录，master 分支会保留这些提交记录，并处在合并节点之后）</p>
 <blockquote>
-<p>提醒<br><em>对本地版本库历史提交的修改导致与远程仓库版本不一致，需要强制 push ！合作开发的时候尤其需要注意，避免代码覆盖的情况！</em></p>
+<p>由于在 hotfix 分支上的提交记录的用户，和管理 master 分支的用户不是一个用户。而这种合并操作最后一步需要手动 commit 并填写 message，这样就丢失了 hotfix 上的原始提交记录的 author time message 信息</p>
 </blockquote>
+<p>所以第二种比较合理的合并方式是：先对 hotfix 进行变基，再并入 master</p>
+<p>如何实现？依次执行如下指令</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到 hotfix 分支</span></span><br><span class="line">git checkout hotfix</span><br><span class="line"><span class="hljs-comment"># 对照 master 分支进行变基，压缩所有历史提交到一个提交</span></span><br><span class="line">git rebase -i master</span><br><span class="line"><span class="hljs-comment"># 变基完成后，查看当前 hotfix 分支相对 master 分支，你会发现 hotfix 分支只前进了一个 commit </span></span><br><span class="line">git <span class="hljs-built_in">log</span> --oneline</span><br><span class="line"><span class="hljs-comment"># 切换到 master 分支</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="hljs-comment"># fast-forward 模式合并 hotfix 分支即可</span></span><br><span class="line">git merge hotfix</span><br><span class="line"><span class="hljs-comment"># 合并后可删除 hotfix 分支</span></span><br><span class="line">git branch -d hotfix</span><br></pre></td></tr></table></figure>
 <center> — <em>The End</em> — </center>
         </div>
         
@@ -285,14 +311,26 @@
         <span class="has-mr-6">1</span>
         <span>分支策略图解</span>
         </a></li><li>
-        <a class="is-flex" href="#修改历史提交">
+        <a class="is-flex" href="#git-rabse-i-交互模式">
         <span class="has-mr-6">2</span>
+        <span>git rabse -i 交互模式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#branch、-HEAD-参数解释">
+        <span class="has-mr-6">2.1</span>
+        <span>branch、 HEAD 参数解释</span>
+        </a></li><li>
+        <a class="is-flex" href="#修改历史提交">
+        <span class="has-mr-6">2.2</span>
         <span>修改历史提交</span>
         </a></li><li>
-        <a class="is-flex" href="#合并提交">
-        <span class="has-mr-6">3</span>
-        <span>合并提交</span>
-        </a></li></ul>
+        <a class="is-flex" href="#合并提交多个历史提交">
+        <span class="has-mr-6">2.3</span>
+        <span>合并提交多个历史提交</span>
+        </a></li><li>
+        <a class="is-flex" href="#合并分支">
+        <span class="has-mr-6">2.4</span>
+        <span>合并分支</span>
+        </a></li></ul></li></ul>
         </div>
     </div>
 </div>
