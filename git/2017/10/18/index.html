@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
 <title>git 实践 - LC &amp; MC</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="//shinekidd.github.io/images/git/merge-ff.png">
 <meta property="og:image" content="//shinekidd.github.io/images/git/merge-no-ff.png">
 <meta property="og:image" content="//shinekidd.github.io/images/git/merge-rebase.png">
-<meta property="og:updated_time" content="2019-03-29T06:20:14.177Z">
+<meta property="og:updated_time" content="2019-04-11T15:32:44.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 实践">
 <meta name="twitter:description" content="记录工作中使用 git 的一些实践经验">
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1213 words)
+                    10 minutes read (About 1457 words)
                 </span>
                 
             </div>
@@ -181,11 +181,22 @@
 </blockquote>
 <a id="more"></a>
 <h2 id="分支策略图解"><a href="#分支策略图解" class="headerlink" title="分支策略图解"></a>分支策略图解</h2><p><img src="/images/git/branch-manage.png" alt=""></p>
-<h2 id="git-rabse-i-交互模式"><a href="#git-rabse-i-交互模式" class="headerlink" title="git rabse -i 交互模式"></a>git rabse -i 交互模式</h2><h3 id="branch、-HEAD-参数解释"><a href="#branch、-HEAD-参数解释" class="headerlink" title="branch、 HEAD 参数解释"></a>branch、 HEAD 参数解释</h3><p><code>git rebase -i</code> 是对当前分支的 commit 进行操作。要求以参数 branch 或 HEAD 结尾</p>
+<h2 id="设置-“remote-tracking”-属性"><a href="#设置-“remote-tracking”-属性" class="headerlink" title="设置 “remote tracking” 属性"></a>设置 “remote tracking” 属性</h2><p>git pull 和 git push 操作的前提是本地分支与对应的远程分支建立的联系</p>
+<p>建立联系的方法有：</p>
+<p>1.基于远程分支检出一个新的分支</p>
+<p><code>git checkout -b localMaster origin/master</code></p>
+<p>2.将本地已存在的分支(localMaster)关联到远程分支(master)上。</p>
+<p><code>git branch -u o/master localMaster</code></p>
+<p>如果当前在 localMaster 上，可省略该参数。<code>git branch -u o/master</code></p>
+<h2 id="git-rebase-分支变基"><a href="#git-rebase-分支变基" class="headerlink" title="git rebase 分支变基"></a>git rebase 分支变基</h2><p><code>git rebase &lt;branch&gt; [target-branch]</code> 参照 branch 分支对 target-branch (默认是当前分支) 分支进行变基操作</p>
+<p>操作效果如下：</p>
+<p>参照 master 在 debug 上创建 master 提交的副本(hash 不变)，并把 debug 分支的工作追加到 master 提交副本上，形成 master 的提交成为 debug 父提交。</p>
+<p>如果分叉后 master 有过提交，则 debug 的提交的 hash 会改变</p>
+<h2 id="git-rabse-i-交互模式变基"><a href="#git-rabse-i-交互模式变基" class="headerlink" title="git rabse -i 交互模式变基"></a>git rabse -i 交互模式变基</h2><h3 id="branch、-HEAD-参数解释"><a href="#branch、-HEAD-参数解释" class="headerlink" title="branch、 HEAD 参数解释"></a>branch、 HEAD 参数解释</h3><p><code>git rebase -i &lt;branch | HEAD&gt; [target-branch]</code>  是对 [target-branch] (默认当前分支) 的 commit 进行操作。</p>
 <ul>
-<li><p>HEAD 参数结尾，就是对指定的 HEAD 之后的的（不包括 HEAD）的提交进行 rebase 操作</p>
+<li><p><head><meta name="generator" content="Hexo 3.8.0"> 参数，就是对指定的 HEAD 之后的的（不包括 HEAD）的提交进行 rebase 操作</head></p>
 </li>
-<li><p>branch （分支名）参数结尾，就是指定某个分支作为参照，寻找与之最近的一次公有的 commit （不包括该 commit）之后的提交，进行 rebase 操作</p>
+<li><p><branch> （分支名）参数，就是指定某个分支作为参照(基准)，寻找与之最近的一次公有的 commit （不包括该 commit）之后的提交，进行 rebase 操作</branch></p>
 </li>
 </ul>
 <h3 id="修改历史提交"><a href="#修改历史提交" class="headerlink" title="修改历史提交"></a>修改历史提交</h3><p>git commit –amend 可以修改最后一次提交，但对于历史提交，要如何修改？</p>
@@ -194,6 +205,7 @@
 <p>把你要修改的 HEAD^^ 的 <code>pick</code> 改成 <code>edit</code> 或者 <code>e</code> ， wq 保存退出</p>
 <p>用 git log 你发现那个 HEAD^^ 在第一个了。</p>
 <p>这时你可以使用 git commit –amend 修改这个 commit。修改完后 git rebase –continue 就可以了。</p>
+<p>进入 rebase 交互模式后，调整提交的顺序并保存修改，就可以修改提交顺序</p>
 <blockquote>
 <p>提示<br>被修改的 commit 节点之后的 commit 节点的 hash 都会变化！<br>中途可以 git rebase –abrot 取消操作</p>
 </blockquote>
@@ -311,24 +323,32 @@
         <span class="has-mr-6">1</span>
         <span>分支策略图解</span>
         </a></li><li>
-        <a class="is-flex" href="#git-rabse-i-交互模式">
+        <a class="is-flex" href="#设置-“remote-tracking”-属性">
         <span class="has-mr-6">2</span>
-        <span>git rabse -i 交互模式</span>
+        <span>设置 “remote tracking” 属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#git-rebase-分支变基">
+        <span class="has-mr-6">3</span>
+        <span>git rebase 分支变基</span>
+        </a></li><li>
+        <a class="is-flex" href="#git-rabse-i-交互模式变基">
+        <span class="has-mr-6">4</span>
+        <span>git rabse -i 交互模式变基</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#branch、-HEAD-参数解释">
-        <span class="has-mr-6">2.1</span>
+        <span class="has-mr-6">4.1</span>
         <span>branch、 HEAD 参数解释</span>
         </a></li><li>
         <a class="is-flex" href="#修改历史提交">
-        <span class="has-mr-6">2.2</span>
+        <span class="has-mr-6">4.2</span>
         <span>修改历史提交</span>
         </a></li><li>
         <a class="is-flex" href="#合并提交多个历史提交">
-        <span class="has-mr-6">2.3</span>
+        <span class="has-mr-6">4.3</span>
         <span>合并提交多个历史提交</span>
         </a></li><li>
         <a class="is-flex" href="#合并分支">
-        <span class="has-mr-6">2.4</span>
+        <span class="has-mr-6">4.4</span>
         <span>合并分支</span>
         </a></li></ul></li></ul>
         </div>
